@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Elements</title>
+    <style>
+        .return-button, .print-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 24px; /* Adjust font size as needed */
+            font-weight: bold;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: pulse 1s infinite; /* Animation */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Add some basic styling for the fixed element */
+        /* Style for clinic and email input fields */
+        .clinic-input, .email-input {
+            border: 1px solid #ccc;
+            padding: 8px;
+            border-radius: 5px;
+            width: 200px; /* Adjust the width as needed */
+            margin-right: 10px; /* Add margin for spacing */
+            text-align: right;
+        }
+
+        .label {
+            margin-right: 10px; /* Add margin for spacing */
+        }
+
+        .fixed-greeting {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Add some padding to the body to prevent overlap with the fixed element */
+        body {
+            padding-top: 40px; /* Adjust this value based on the height of your fixed element */
+        }
+
+        /* Style for the table */
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Style for the print button */
+        .print-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 24px; /* Adjust font size as needed */
+            font-weight: bold;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: pulse 1s infinite; /* Animation */
+        }
+
+        @media print {
+            .print-button, .return-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed greeting element -->
+    <br>
+    <div class="x" style="background-color: white; padding: 15px; text-align: center; font-size: 25px; font-weight: bold; margin-top: -30px; margin-right: 10px;">
+                 طلب واذن صرف:مستهلك        
+    </div>
+    <br>
+
+    <div class="fixed-greeting" style="top: 5; right: 0; background-color:white; padding: 10px; text-align: right; font-size: 18px; font-weight: bold;">
+        اسم الجهه: مستشفي طب الاسنان
+    </div>
+
+    <div class="g" style="position:fixed; top: 10px; left: 20; background-color:white; padding: 15px; text-align: left; font-size: 18px; font-weight: normal;">
+        (نموذج (٢)مخزن الحكومة)
+    </div>
+
+    <div class="g" style="position: fixed; top: 60px; left: 10; background-color:white; padding: 20px; text-align: left; font-size: 18px; font-weight: normal; margin-bottom: 20px;">
+        رقم الإذن: ___________ تاريخ:___/___/___ ٢٠
+    </div>
+
+    <br>
+
+    <div class="fix" style="position: fixed; top: 103px; left: 130px;background-color:white; padding: 20px; text-align: left; font-size: 16px; font-weight: normal;">
+        _____________:سند الصرف(*)
+    </div>
+
+    <!-- Additional fixed greeting element -->
+    <div class="fixed-greeting" style="position: fixed; top: 40px; right: 0px;background-color:white; padding: 10px; text-align: right; font-size: 16px; font-weight: normal;">
+        مخزن :مستهلك
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: flex-end; margin-right: 0px; margin-top: -50px; margin-bottom: 30px;">
+        <input type="date" id="selectedDate" class="date-input" style="text-align: right; margin-right: 0px; margin-bottom: 5px;">
+        <label for="selectedDate" style="text-align: right; margin-right: 0px;">:تاريخ الطلب</label>
+        <!-- Add additional elements here if needed -->
+    </div>
+
+    <div class="fixed-greeting" style="position: fixed; top: 102px; right: 0;background-color:white; padding: 15px; text-align: right; font-size: 16px; font-weight: normal; margin-right: 0px;">
+        _______________:اسم الطلب : ( مخزن/ ادارة/العامل)
+    </div>
+
+    <br>
+
+    <!-- Table to display selected elements and quantities -->
+    <table>
+        <thead>
+            <tr>
+                <th colspan="1">الملاحظات</th>
+                <th colspan="2">القيمة</th>
+                <th colspan="2">سعر الوحدة</th>
+                <th colspan="1">(**)حالة الصنف</th>
+                <th colspan="2">الكمية المنصرفة</th>
+                <th colspan="2">الكمية المصرح بها</th>
+                <th colspan="2">الكمية المطلوبة</th>
+                <th colspan="1">الوحدة</th>
+                <th colspan="1">اسم الصنف</th>
+                <th colspan="1">رقم الصنف</th>
+            </tr>
+        </thead>
+        <tbody id="selectedElementsTableBody"></tbody>
+    </table>
+
+    <footer style="text-align: center; margin-top: 20px;">
+        <table style="width: auto;">
+            <thead>
+                <tr>
+                    <th>توقيع الطالب</th>
+                    <th>يصرح بالصرف</th>
+                    <th>امين المخزن</th>
+                    <th>كاتب الشطب</th>
+                    <th>توقيع المستلم</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" style="width:100%"></td>
+                    <td><input type="text" style="width: 100%;"></td>
+                    <td><input type="text" style="width: 100%;"></td>
+                    <td><input type="text" style="width: 100%;"></td>
+                    <td><input type="text" style="width: 100%;"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="text-align: right; font-size: small;">.كشف العجز - سند خصم أصناف فاقدة او تالفة - محضر بيع - طلب تشغيل - إهداءات ليست النشاط الرئيسي للجهة (*)</p>
+        <p style="text-align: right; font-size: small;">.جديدة - مستعمل - قابل للإصلاح - كهنة او خردة (**)</p>
+    </footer>
+
+    <!-- Print button -->
+    <button class="print-button" onclick="printSelectedElements()">Print</button>
+    <button class="return-button" onclick="redirectToHomePage()">العودة للصفحة الرئيسية</button>
+
+    <script>
+        // Parse the URL parameters to get the selected elements and quantities
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedElements = {};
+
+        for (const [element, quantity] of urlParams.entries()) {
+            selectedElements[element] = parseInt(quantity);
+        }
+
+        // Display the selected elements and quantities in the table
+        const tableBody = document.getElementById('selectedElementsTableBody');
+        for (const [element, quantity] of Object.entries(selectedElements)) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                    <td></td>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td colspan="1"></td>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td>${quantity}</td>
+                    <td></td>
+                    <td></td>
+                    <td>${element.charAt(0).toUpperCase() + element.slice(1)}</td>
+                    <td></td>
+                `;
+            tableBody.appendChild(row);
+        }
+
+        // Print function
+        function printSelectedElements() {
+            window.print();
+        }
+
+        function redirectToHomePage() {
+            window.location.href = '/Home/Index'; // Adjust the URL based on your application's routing
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+﻿.waiting-button, .completed-button, .update-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.waiting-button {
+    background-color: #ff0000; /* Red background for waiting */
+}
+
+    .waiting-button:hover {
+        background-color: #e60000; /* Darker red on hover */
+        transform: scale(1.05);
+    }
+
+.completed-button {
+    background-color: #00ff00; /* Green background for completed */
+}
+
+    .completed-button:hover {
+        background-color: #00cc00; /* Darker green on hover */
+        transform: scale(1.05);
+    }
+
+.update-button {
+    background-color: #007bff; /* Blue color */
+}
+
+    .update-button:hover {
+        background-color: #0056b3; /* Darker blue color on hover */
+        transform: scale(1.05);
+    }
+
+    .update-button.success {
+        background-color: #28a745 !important; /* Green color for successful update */
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    animation: fadeIn 1s ease-in-out;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+th {
+    background-color: #4CAF50; /* Dark green background for headers */
+    color: black;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+    th select {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        margin-top: 5px;
+    }
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+.search-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    width: 300px;
+}
+
+.search-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-options-card {
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    z-index: 10; /* Ensures the card appears above other elements */
+}
+
+.card-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-content label {
+    display: block;
+    margin-bottom: 5px;
+}
+

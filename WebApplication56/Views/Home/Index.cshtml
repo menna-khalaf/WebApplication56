@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="/css/Home2.css" />
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="/css/image/cddenta.PNG" alt="الشعار" class="logo-image" id="logoImage">
+        </div>
+        <div class="auth-buttons">
+            <button class="btn"><a asp-action="Create" asp-controller="Users">انشاء حساب</a></button>
+            <button class="btn"><a asp-action="login" asp-controller="Users">تسجيل دخول</a></button>
+        </div>
+    </div>
+
+    <div class="content">
+        <img src="/css/image/Untitled-95.jpg" alt="الشعار الجديد" class="logo-below" id="logoBelow">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var logoImage = document.getElementById("logoImage");
+            var logoBelow = document.getElementById("logoBelow");
+
+            if (logoImage) {
+                console.log("Logo Image element found:", logoImage);
+                console.log("Logo Image source:", logoImage.src);
+                logoImage.onerror = function () {
+                    console.error("Error loading logo image with source:", logoImage.src);
+                };
+            } else {
+                console.error("Logo Image element not found.");
+            }
+
+            if (logoBelow) {
+                console.log("Logo Below element found:", logoBelow);
+                console.log("Logo Below source:", logoBelow.src);
+                logoBelow.onerror = function () {
+                    console.error("Error loading logo below image with source:", logoBelow.src);
+                };
+            } else {
+                console.error("Logo Below element not found.");
+            }
+        });
+    </script>
+</body>
+</html>

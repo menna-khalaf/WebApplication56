@@ -1,0 +1,551 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebApplication56
+build_property.RootNamespace = WebApplication56
+build_property.ProjectDir = C:\Users\Electronica\source\repos\WebApplication56\WebApplication56\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Electronica\source\repos\WebApplication56\WebApplication56
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustments/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustmenttools1/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHRvb2xzMVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustmenttools1/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHRvb2xzMVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustmenttools1/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHRvb2xzMVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustmenttools1/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHRvb2xzMVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustmenttools1/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHRvb2xzMVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustmenttools/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHRvb2xzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustmenttools/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHRvb2xzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustmenttools/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHRvb2xzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustmenttools/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHRvb2xzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Adjustmenttools/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRqdXN0bWVudHRvb2xzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/cliniclayout/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcY2xpbmljbGF5b3V0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/ClinicOrder/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljT3JkZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/ClinicOrder/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljT3JkZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/ClinicOrder/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljT3JkZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/ClinicOrder/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljT3JkZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/ClinicOrder/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljT3JkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Clinic/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Clinic/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Clinic/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Clinic/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/OrderedTools/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJlZFRvb2xzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/OrderedTools/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJlZFRvb2xzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/OrderedTools/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJlZFRvb2xzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/OrderedTools/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJlZFRvb2xzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/OrderedTools/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJlZFRvb2xzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Orders/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Orders/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Orders/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Orders/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Orders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/reportlayout/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NccmVwb3J0bGF5b3V0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Report/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Repurshase/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwdXJzaGFzZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1FIRSTHALF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFGSVJTVEhBTEYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthApril.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aEFwcmlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthAUGUST.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aEFVR1VTVC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthDecember.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aERlY2VtYmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthFebruary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aEZlYnJ1YXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthJANUARY.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aEpBTlVBUlkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthJULY.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aEpVTFkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthJUNE.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aEpVTkUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthMARCH.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aE1BUkNILmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthMAY.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aE1BWS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthNOVEMBER.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aE5PVkVNQkVSLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthOCTOBER.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aE9DVE9CRVIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1MonthSEPTEMBER.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFNb250aFNFUFRFTUJFUi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1QUARTERFIRST.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFRVUFSVEVSRklSU1QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1QUARTERFOURTH.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFRVUFSVEVSRk9VUlRILmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1QUARTERSECOND.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFRVUFSVEVSU0VDT05ELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1QUARTERTHIRD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFRVUFSVEVSVEhJUkQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/A1SECONDHALF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcQTFTRUNPTkRIQUxGLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedClinic/QuarterlySalesForClinicA1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRDbGluaWNcUXVhcnRlcmx5U2FsZXNGb3JDbGluaWNBMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1AnnualIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMUFubnVhbEluY29taW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1AprilIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMUFwcmlsSW5jb21pbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1AugustIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMUF1Z3VzdEluY29taW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1DecemberIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMURlY2VtYmVySW5jb21pbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1FebruaryIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMUZlYnJ1YXJ5SW5jb21pbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1FirstHalfIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMUZpcnN0SGFsZkluY29taW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1FirstQuarterIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMUZpcnN0UXVhcnRlckluY29taW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1FourthQuarterIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMUZvdXJ0aFF1YXJ0ZXJJbmNvbWluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1JanuaryIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMUphbnVhcnlJbmNvbWluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1JulyIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMUp1bHlJbmNvbWluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1JuneIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMUp1bmVJbmNvbWluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1MarchIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMU1hcmNoSW5jb21pbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1MayIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMU1heUluY29taW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1NovemberIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMU5vdmVtYmVySW5jb21pbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1OctoberIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMU9jdG9iZXJJbmNvbWluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1SecondHalfIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMVNlY29uZEhhbGZJbmNvbWluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1SecondQuarterIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMVNlY29uZFF1YXJ0ZXJJbmNvbWluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1SeptemberIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMVNlcHRlbWJlckluY29taW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedIncoming/A1ThirdQuarterIncoming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRJbmNvbWluZ1xBMVRoaXJkUXVhcnRlckluY29taW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1April.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMUFwcmlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1August.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMUF1Z3VzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1December.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMURlY2VtYmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1February.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMUZlYnJ1YXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1FirstAnnual.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMUZpcnN0QW5udWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1FirstQuarter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMUZpcnN0UXVhcnRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1FourthQuarter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMUZvdXJ0aFF1YXJ0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1January.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMUphbnVhcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1July.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMUp1bHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1June.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMUp1bmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1March.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMU1hcmNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1May.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMU1heS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1November.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMU5vdmVtYmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1October.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMU9jdG9iZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1SecondAnnual.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMVNlY29uZEFubnVhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1SecondQuarter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMVNlY29uZFF1YXJ0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1September.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMVNlcHRlbWJlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedOutgoing/A1ThirdQuarter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRPdXRnb2luZ1xBMVRoaXJkUXVhcnRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1FIRSTHALF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMUZJUlNUSEFMRi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1FirstQuarter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMUZpcnN0UXVhcnRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1FourthQuarter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMUZvdXJ0aFF1YXJ0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MONTHAPRIL.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1PTlRIQVBSSUwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MONTHAUGUST.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1PTlRIQVVHVVNULmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MONTHDECEMBER.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1PTlRIREVDRU1CRVIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MONTHFEBRUARY.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1PTlRIRkVCUlVBUlkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MonthJANUARY.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1vbnRoSkFOVUFSWS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MONTHJULY.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1PTlRISlVMWS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MONTHJUNE.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1PTlRISlVORS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MONTHMARCH.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1PTlRITUFSQ0guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MONTHMAY.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1PTlRITUFZLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MONTHNOVEMBER.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1PTlRITk9WRU1CRVIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MONTHOCTOBER.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1PTlRIT0NUT0JFUi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1MONTHSEPTEMBER.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMU1PTlRIU0VQVEVNQkVSLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1SECONDHALF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMVNFQ09OREhBTEYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1SecondQuarter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMVNlY29uZFF1YXJ0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/SelectedTools/A1ThirdQuarter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VsZWN0ZWRUb29sc1xBMVRoaXJkUXVhcnRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Tools/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9vbHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Tools/SelectedToolsPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9vbHNcU2VsZWN0ZWRUb29sc1BhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Users/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Users/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Users/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Users/login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcbG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Users/navbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcbmF2YmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Users/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Electronica/source/repos/WebApplication56/WebApplication56/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ysm5xuusf7

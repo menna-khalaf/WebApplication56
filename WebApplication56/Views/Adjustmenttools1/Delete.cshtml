@@ -1,0 +1,151 @@
+﻿@model WebApplication56.Models.Adjustmenttool
+
+@{
+    ViewData["Title"] = "حذف أداة التعديل";
+}
+
+<h1 class="text-center text-danger mt-4">حذف أداة التعديل</h1>
+
+<div id="alertBox" class="alert alert-warning text-center mt-4">
+    <h4>هل أنت متأكد أنك تريد حذف هذه الأداة التعديلية؟</h4>
+    <div class="mt-4">
+        <button type="button" id="confirmDeleteButton" class="btn btn-danger mx-2">حذف</button>
+        <button type="button" id="cancelButton" class="btn btn-secondary mx-2">إلغاء</button>
+    </div>
+</div>
+
+<div id="formOverlay" class="overlay">
+    <div class="content-wrapper mt-5 p-4 shadow-lg rounded-lg">
+        <dl class="row justify-content-center text-right">
+            <dt class="col-sm-4 font-weight-bold">المعرف</dt>
+            <dd class="col-sm-8">@Model.AdjId</dd>
+            <dt class="col-sm-4 font-weight-bold">الرصيد</dt>
+            <dd class="col-sm-8">@Model.Balance</dd>
+            <dt class="col-sm-4 font-weight-bold">الكمية الفعلية</dt>
+            <dd class="col-sm-8">@Model.ActualQuantity</dd>
+            <dt class="col-sm-4 font-weight-bold">الفرق</dt>
+            <dd class="col-sm-8">@Model.Difference</dd>
+            <dt class="col-sm-4 font-weight-bold">السبب</dt>
+            <dd class="col-sm-8">@Model.Because</dd>
+            <dt class="col-sm-4 font-weight-bold">التاريخ</dt>
+            <dd class="col-sm-8">@Model.Adj.AdjDate</dd>
+            <dt class="col-sm-4 font-weight-bold">البريد الإلكتروني</dt>
+            <dd class="col-sm-8">@Model.Adj.Email</dd>
+            <dt class="col-sm-4 font-weight-bold">اسم الأداة</dt>
+            <dd class="col-sm-8">@Model.ToolNameNavigation.ToolName</dd>
+        </dl>
+        <form id="deleteForm" class="text-center mt-4">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="AdjId" />
+            <input type="hidden" asp-for="ToolNameNavigation.ToolName" />
+            <button type="button" id="deleteButton" class="btn btn-danger btn-lg mx-2">حذف</button>
+            <a asp-action="Index" class="btn btn-secondary btn-lg mx-2">إلغاء</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#deleteButton').click(function () {
+                $('#alertBox').show();
+                $('#formOverlay').addClass('blur');
+            });
+
+            $('#confirmDeleteButton').click(function () {
+                var adjId = $('input[name="AdjId"]').val();
+                var toolName = $('input[name="ToolNameNavigation.ToolName"]').val();
+                var token = $('input[name="__RequestVerificationToken"]').val();
+
+                $.ajax({
+                    url: '@Url.Action("DeleteConfirmed", "Adjustmenttools1")',
+                    type: 'POST',
+                    data: {
+                        adjId: adjId,
+                        toolName: toolName,
+                        __RequestVerificationToken: token
+                    },
+                    success: function () {
+                        window.location.href = '@Url.Action("Index", "Adjustmenttools1")';
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error Status: ' + status);
+                        console.log('Error: ' + error);
+                        console.log('XHR: ' + JSON.stringify(xhr));
+                        alert('حدث خطأ أثناء الحذف: ' + xhr.responseJSON.message);
+                    }
+                });
+            });
+
+            $('#cancelButton').click(function () {
+                $('#alertBox').hide();
+                $('#formOverlay').removeClass('blur');
+            });
+        });
+    </script>
+}
+
+<style>
+    body {
+        background-color: #f0f2f5;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .content-wrapper {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 30px auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .alert-warning {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        background-color: #ffeeba;
+        border: 1px solid #ffeeba;
+        color: #856404;
+        display: none;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+    }
+
+    .row > dt {
+        color: #333;
+    }
+
+    .row > dd {
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .overlay.blur {
+        filter: blur(5px);
+        transition: filter 0.3s;
+    }
+</style>

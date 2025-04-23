@@ -1,0 +1,216 @@
+﻿@model WebApplication56.Models.ToolAndClinicViewModel
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Group with Scrollbar and Search Bar</title>
+    <link rel="stylesheet" href="~/css/mainreport.css" />
+</head>
+<body>
+    <div class="form-group">
+        <div class="button-container">
+            <div class="btn-group-toggle" data-toggle="buttons">
+                <ul>
+                    <li>
+                        <div class="dropdown">
+                        <span class="large-btn" onclick="toggleList(this)">تقرير عن الصادرات<span class="arrow"></span></span>
+                        <ul class="dropdown-menu">
+                            <input type="text" class="search-bar" placeholder="Search" onkeyup="filterItems(this)">
+                            <li onclick="changeParentName(this)"><a asp-action="A1" asp-controller="SelectedOutgoing">سنوي</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1FirstAnnual" asp-controller="SelectedOutgoing">النصف الاول من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1SecondAnnual" asp-controller="SelectedOutgoing">النصف الثاني من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1FirstQuarter" asp-controller="SelectedOutgoing">الربع الاول من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1SecondQuarter" asp-controller="SelectedOutgoing">الربع الثاني من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1ThirdQuarter" asp-controller="SelectedOutgoing">الربع الثالث من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1FourthQuarter" asp-controller="SelectedOutgoing">الربع الرابع من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1January" asp-controller="SelectedOutgoing">شهر يناير</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1February" asp-controller="SelectedOutgoing">شهر فبراير</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1March" asp-controller="SelectedOutgoing">شهر مارس</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1April" asp-controller="SelectedOutgoing">شهر إبريل</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1May" asp-controller="SelectedOutgoing">شهر مايو</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1June" asp-controller="SelectedOutgoing">شهر يونيو</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1July" asp-controller="SelectedOutgoing">شهر يوليو</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1August" asp-controller="SelectedOutgoing">شهر أغسطس</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1September" asp-controller="SelectedOutgoing">سبتمبر</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1October" asp-controller="SelectedOutgoing">أكتوبر</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1November" asp-controller="SelectedOutgoing">نوفمبر</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1December" asp-controller="SelectedOutgoing">ديسمبر</a></li>
+                        </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                        <span class="large-btn" onclick="toggleList(this)">تقرير عن الواردات<span class="arrow"></span></span>
+                        <ul class="dropdown-menu">
+                            <input type="text" class="search-bar" placeholder="Search" onkeyup="filterItems(this)">
+                            <li onclick="changeParentName(this)"><a asp-action="A1AnnualIncoming" asp-controller="SelectedIncoming">سنوي</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1FirstHalfIncoming" asp-controller="SelectedIncoming">النصف الاول من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1SecondHalfIncoming" asp-controller="SelectedIncoming">النصف االثاني من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1FirstQuarterIncoming" asp-controller="SelectedIncoming">الربع الاول من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1SecondQuarterIncoming" asp-controller="SelectedIncoming">الربع الثاني من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1ThirdQuarterIncoming" asp-controller="SelectedIncoming">الربع الثالث من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1FourthQuarterIncoming" asp-controller="SelectedIncoming">الربع الرابع من السنه</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1JanuaryIncoming" asp-controller="SelectedIncoming">شهر يناير</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1FebruaryIncoming" asp-controller="SelectedIncoming">شهر فبراير</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1MarchIncoming" asp-controller="SelectedIncoming">شهر مارس</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1AprilIncoming" asp-controller="SelectedIncoming">شهر إبريل</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1MayIncoming" asp-controller="SelectedIncoming">شهر مايو</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1JuneIncoming" asp-controller="SelectedIncoming">شهر يونيو</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1JulyIncoming" asp-controller="SelectedIncoming">شهر يوليو</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1AugustIncoming" asp-controller="SelectedIncoming">شهر أغسطس</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1SeptemberIncoming" asp-controller="SelectedIncoming">شهر سبتمبر</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1OctoberIncoming" asp-controller="SelectedIncoming">شهر أكتوبر</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="A1NovemberIncoming" asp-controller="SelectedIncoming">شهر نوفمبر</a></li>
+                            <li onclick="changeParentName(this)"><a asp-action="" asp-controller="SelectedIncoming">شهر ديسمبر</a></li>
+                        </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <span class="large-btn" onclick="toggleDropdown(this)">تقرير عن العيادات<span class="arrow"></span></span>
+                            <ul class="dropdown-menu">
+                                <input type="text" class="search-bar" placeholder="Search" onkeyup="filterDropdownItems(this)">
+                                @foreach (var clinicName in Model.ClinicNames)
+                                {
+                                    <li onclick="selectClinic('@clinicName')">@clinicName</li>
+                                }
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <span class="large-btn" onclick="toggleDropdown(this)">تقرير عن الأدوات<span class="arrow"></span></span>
+                            <ul class="dropdown-menu">
+                                <input type="text" class="search-bar" placeholder="Search" onkeyup="filterDropdownItems(this)">
+                                @foreach (var toolName in Model.ToolNames)
+                                {
+                                    <li>
+                                        <button type="button" onclick="selectTool('@toolName')">@toolName</button>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="large-btn" onclick="toggleList(this)"><a style="color:white;background-color:#0056b3;" asp-action="Index" asp-controller="Repurshase">بيان لاعاده الشراء</a> <span class="arrow"></span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function toggleList(button) {
+            var nestedList = button.nextElementSibling;
+            nestedList.classList.toggle("open");
+            button.querySelector(".arrow").classList.toggle("open");
+        }
+
+        function filterItems(input) {
+            var filter = input.value.toUpperCase();
+            var ul = input.parentNode.nextElementSibling;
+            var li = ul.getElementsByTagName("li");
+            for (var i = 0; i < li.length; i++) {
+                var a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+
+        function changeParentName(element) {
+            var parentButton = element.closest("ul").previousElementSibling;
+            var selectedText = element.textContent.trim();
+            parentButton.innerHTML = selectedText + '<span class="arrow"></span>';
+        }
+
+        function toggleDropdown(button) {
+            var dropdownMenu = button.nextElementSibling;
+            dropdownMenu.classList.toggle("open");
+            button.querySelector(".arrow").classList.toggle("open");
+        }
+
+        function filterDropdownItems(input) {
+            var filter = input.value.toUpperCase();
+            var dropdownMenu = input.parentNode.nextElementSibling;
+            var li = dropdownMenu.getElementsByTagName("li");
+            for (var i = 0; i < li.length; i++) {
+                var button = li[i].getElementsByTagName("button")[0];
+                if (button.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+
+        function selectClinic(clinicName) {
+            $.ajax({
+                type: "POST",
+                url: "/Report/SelectClinic",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify(clinicName),
+                success: function (response) {
+                    if (response.success) {
+                        showAlert('تم حفظ اختيار العيادة بنجاح.');
+                        // Redirect to the ReportLayout controller's Index action
+                        window.location.href = '@Url.Action("Index", "ClinicLayout")';
+                    } else {
+                        showAlert('فشل في حفظ اختيار العيادة. ' + response.message);
+                        console.error("فشل في حفظ اختيار العيادة:", response.message);
+                    }
+                },
+                error: function (err) {
+                    showAlert('فشل في حفظ اختيار العيادة.');
+                    console.error("فشل في حفظ اختيار العيادة:", err);
+                }
+            });
+            toggleDropdown(document.querySelector('.dropdown-menu.open').previousElementSibling); // Close the dropdown after selection
+        }
+
+        function selectTool(toolName) {
+            $.ajax({
+                type: "POST",
+                url: "/Report/SelectTool",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify(toolName),
+                success: function (response) {
+                    if (response.success) {
+                        showAlert('تم حفظ اختيار الأداة بنجاح.');
+                        // Redirect to the ReportLayout controller's Index action
+                        window.location.href = '@Url.Action("Index", "ReportLayout")';
+                    } else {
+                        showAlert('فشل في حفظ اختيار الأداة. ' + response.message);
+                        console.error("فشل في حفظ اختيار الأداة:", response.message);
+                    }
+                },
+                error: function (err) {
+                    showAlert('فشل في حفظ اختيار الأداة.');
+                    console.error("فشل في حفظ اختيار الأداة:", err);
+                }
+            });
+            toggleDropdown(document.querySelector('.dropdown-menu.open').previousElementSibling); // Close the dropdown after selection
+        }
+
+        function showAlert(message) {
+            var modal = document.createElement('div');
+            modal.classList.add('modal');
+            modal.innerHTML =
+                '<div class="modal-content">' +
+                '<span class="close-btn" onclick="this.parentElement.parentElement.remove()">&times;</span>' +
+                '<p>' + message + '</p>' +
+                '</div>';
+            document.body.appendChild(modal);
+        }
+    </script>
+</body>
+</html>
+
+   

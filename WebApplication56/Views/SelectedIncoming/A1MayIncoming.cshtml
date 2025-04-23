@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Chart Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1 1 calc(50% - 10px); /* Two cards in a row with 20px gap */
+            margin-bottom: 20px;
+        }
+
+        .chart-canvas {
+            width: 100%;
+            height: 300px; /* Adjust the height as needed */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .print-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .print-btn:hover {
+                background-color: #0056b3;
+            }
+
+        /* Adjustments to position charts closer together */
+        #barChart, #lineChart {
+            margin-bottom: 20px; /* Increase the margin bottom for bar and line chart */
+        }
+
+        #pieChart, #doughnutChart {
+            margin-top: 20px; /* Increase the margin top for pie and doughnut chart */
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Bar Chart</h2>
+            <canvas id="barChart" class="chart-canvas"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Pie Chart</h2>
+            <canvas id="pieChart" class="chart-canvas"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Line Chart</h2>
+            <canvas id="lineChart" class="chart-canvas"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Doughnut Chart</h2>
+            <canvas id="doughnutChart" class="chart-canvas"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Data Table</h2>
+            <table id="DataTable">
+                <thead>
+                    <tr>
+                        <th>Tool Name</th>
+                        <th>Incoming Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data rows will be added dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button id="printButton" class="print-btn">Print</button>
+
+    <script type="text/javascript">
+        $(function () {
+            renderTable();
+            renderChart('bar', 'barChart');
+            renderChart('pie', 'pieChart');
+            renderChart('line', 'lineChart');
+            renderChart('doughnut', 'doughnutChart');
+
+            function renderChart(chartType, canvasId) {
+                $.ajax({
+                    type: "POST",
+                    url: "/SelectedIncoming/a1MayIncoming",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("Received data for", chartType, "chart:", data);
+
+                        var toolNames = data.map(item => item.toolName);
+                        var totalIncomingQuantities = data.map(item => item.totalIncomingQuantity || 0); // Use 0 if totalIncomingQuantity is undefined
+
+                        // Render the chart
+                        var ctx = document.getElementById(canvasId).getContext('2d');
+                        new Chart(ctx, {
+                            type: chartType,
+                            data: {
+                                labels: toolNames,
+                                datasets: [{
+                                    label: 'Total Incoming Quantity',
+                                    data: totalIncomingQuantities,
+                                    backgroundColor: generateRandomColors(totalIncomingQuantities.length),
+                                    borderColor: 'rgba(255, 99, 132, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                    },
+                    error: function (err) {
+                        console.error("Error occurred:", err);
+                    }
+                });
+            }
+
+            function renderTable() {
+                $.ajax({
+                    type: "POST",
+                    url: "/SelectedIncoming/a1MayIncoming",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("Received data for table:", data);
+
+                        var tableBody = $('#DataTable tbody');
+                        tableBody.empty(); // Clear previous data
+                        for (var i = 0; i < data.length; i++) {
+                            var row = $('<tr>');
+                            row.append($('<td>').text(data[i].toolName));
+                            row.append($('<td>').text(data[i].totalIncomingQuantity || 0)); // Add default value if totalIncomingQuantity is undefined
+                            tableBody.append(row);
+                        }
+
+                        // Calculate and set the height of the table dynamically
+                        var tableHeight = $('#DataTable')[0].scrollHeight;
+                        $('#DataTable').css('height', tableHeight + 'px');
+                    },
+                    error: function (err) {
+                        console.error("Error occurred:", err);
+                    }
+                });
+            }
+
+            // Function to generate random colors
+            function generateRandomColors(count) {
+                var colors = [];
+                for (var i = 0; i < count; i++) {
+                    var color = 'rgba(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ', 0.6)';
+                    colors.push(color);
+                }
+                return colors;
+            }
+
+            $('#printButton').on('click', function () {
+                window.print();
+            });
+        });
+    </script>
+
+</body>
+</html>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}

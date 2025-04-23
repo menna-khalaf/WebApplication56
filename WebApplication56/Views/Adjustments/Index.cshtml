@@ -1,0 +1,200 @@
+﻿@model WebApplication56.Models.Adjustmenttool
+
+@{
+    ViewData["Title"] = "Index";
+}
+ 
+
+@if (ViewBag.AdjId != null)
+{
+    <p style="text-align: right; font-weight: bold;color:#0c1c7a; font-size:30px;">رقم التسويه: @ViewBag.AdjId</p>
+}
+
+<style>
+    .table-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .table thead {
+        background-color: #47b5df;
+    }
+
+    .table th {
+        color: white;
+        text-align: center;
+    }
+
+    .table tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #e0e7ef;
+    }
+
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        color: white;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .form-control {
+        display: inline-block;
+        width: auto;
+    }
+
+    .btn-register {
+        display: block;
+        margin: 20px auto;
+        font-weight: bold;
+    }
+</style>
+
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>اسم الاداه</th>
+                <th>الكميه المخزنه</th>
+                <th>الكميه الفعليه</th>
+                <th>الفرق</th>
+                <th>الادوات</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select class="form-control toolSelect" style="width: 200px;">
+                        <option value="">-- اختر اداه --</option>
+                        @foreach (var toolName in ViewBag.ToolNames)
+                        {
+                            <option value="@toolName">@toolName</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <input class="form-control balanceInput" type="number" readonly>
+                </td>
+                <td>
+                    <input class="form-control actualQuantity" type="number">
+                </td>
+                <td>
+                    <span class="difference"></span>
+                </td>
+                <td>
+                    <button class="btn btn-success" onclick="addRow()">+</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<button class="btn btn-primary btn-register" id="insertAllBtn">تسجيل</button>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function addRow() {
+            var lastRow = document.querySelector("tbody tr:last-child");
+            var newRow = lastRow.cloneNode(true);
+
+            var inputs = newRow.querySelectorAll("input[type='text'], input[type='number']");
+            inputs.forEach(function (input) {
+                input.value = "";
+            });
+
+            var differenceField = newRow.querySelector(".difference");
+            differenceField.textContent = "";
+
+            var actualQuantityField = newRow.querySelector(".actualQuantity");
+            actualQuantityField.value = "";
+
+            document.querySelector("tbody").appendChild(newRow);
+        }
+
+        $(document).on("change", ".toolSelect", function () {
+            var selectedTool = $(this).val();
+            var balanceInput = $(this).closest("tr").find(".balanceInput");
+
+            $.ajax({
+                type: 'GET',
+                url: '/Adjustments/GetBalanceForTool',
+                data: { toolName: selectedTool },
+                success: function (data) {
+                    balanceInput.val(data);
+                },
+                error: function (xhr, status, error) {
+                    console.error("AJAX request failed: " + error);
+                }
+            });
+        });
+
+        $(document).on("input", ".actualQuantity", function () {
+            var actualQuantity = $(this).val();
+            var balance = $(this).closest("tr").find(".balanceInput").val();
+            var difference = actualQuantity - balance;
+            $(this).closest("tr").find(".difference").text(difference);
+        });
+
+        $("#insertAllBtn").click(function () {
+            var adjustmentData = [];
+            $("tbody tr").each(function () {
+                var row = $(this);
+                var actualQuantity = row.find(".actualQuantity").val();
+                var difference = row.find(".difference").text();
+                var balance = row.find(".balanceInput").val();
+                var toolName = row.find(".toolSelect").val();
+
+                // Assuming AdjId is obtained and stored in a variable like sessionAdjId
+                var sessionAdjId = @Html.Raw(Json.Serialize(ViewBag.AdjId));
+
+                adjustmentData.push({
+                    AdjId: sessionAdjId,
+                    ActualQuantity: parseInt(actualQuantity),
+                    Difference: parseInt(difference),
+                    Balance: parseInt(balance),
+                    ToolName: toolName
+                });
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '/Adjustments/InsertAllAdjustments',
+                contentType: 'application/json',
+                data: JSON.stringify(adjustmentData),
+                success: function (response) {
+                    console.log("Response: ", response);
+                    if (response.success) {
+                        window.location.href = '@Url.Action("Index", "Home")'; // Redirect on success
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("AJAX request failed: " + error);
+                }
+            });
+        });
+
+    </script>
+}

@@ -1,0 +1,98 @@
+﻿@model WebApplication56.Models.Adjustmenttool
+
+@{
+    ViewData["Title"] = "تعديل";
+}
+ <link rel="stylesheet" href="~/css/editadjustment1.css"/>
+<h1 class="text-center text-primary mt-4">تعديل أداة التعديل</h1>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg animate__animated animate__fadeIn">
+            <div class="card-body">
+                <form id="editForm" asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <input type="hidden" asp-for="AdjId" />
+                    <input type="hidden" asp-for="ToolName" />
+
+                    <div class="form-group row mb-4">
+                        <label asp-for="ToolName" class="form-label text-primary">اسم الأداة</label>
+                        <input asp-for="ToolName" class="form-control text-start" readonly />
+                        <span asp-validation-for="ToolName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label asp-for="Balance" class="form-label text-primary">الرصيد</label>
+                        <input asp-for="Balance" class="form-control text-start" readonly />
+                        <span asp-validation-for="Balance" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label asp-for="ActualQuantity" class="form-label text-primary">الكمية الفعلية</label>
+                        <input asp-for="ActualQuantity" class="form-control text-start" />
+                        <span asp-validation-for="ActualQuantity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label asp-for="Difference" class="form-label text-primary">الفرق</label>
+                        <input asp-for="Difference" class="form-control text-start" readonly />
+                        <span asp-validation-for="Difference" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label asp-for="Because" class="form-label text-primary">السبب</label>
+                        <input asp-for="Because" class="form-control text-start" />
+                        <span asp-validation-for="Because" class="text-danger"></span>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="button" id="saveButton" class="btn btn-success btn-lg">حفظ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a asp-action="Index" class="btn btn-secondary btn-lg">العودة إلى القائمة</a>
+</div>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function calculateDifference() {
+                var balance = parseInt($('input[name="Balance"]').val()) || 0;
+                var actualQuantity = parseInt($('input[name="ActualQuantity"]').val()) || 0;
+                var difference = actualQuantity - balance;
+                $('input[name="Difference"]').val(difference);
+            }
+
+            $('input[name="Balance"], input[name="ActualQuantity"]').on('input', function () {
+                calculateDifference();
+            });
+
+            $('#saveButton').click(function () {
+                var form = $('#editForm');
+                $.ajax({
+                    url: form.attr('action'),
+                    type: 'POST',
+                    data: form.serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            window.location.href = '@Url.Action("Index", "Adjustmenttools1")';
+                        } else {
+                            alert('حدث خطأ أثناء الحفظ: ' + (response.message || response.errors.join(', ')));
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error Status: ' + status);
+                        console.log('Error: ' + error);
+                        console.log('XHR: ' + JSON.stringify(xhr));
+                        alert('حدث خطأ أثناء الحفظ');
+                    }
+                });
+            });
+
+            calculateDifference();
+        });
+    </script>
+}
+ 

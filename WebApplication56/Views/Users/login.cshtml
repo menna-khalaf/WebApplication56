@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* استايل أساسي للجسم */
+        body {
+            font-family: 'Arial', sans-serif;
+            direction: rtl;
+            text-align: right;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* تنسيق محتوى الصفحة بالكامل */
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #b0ddf4;
+            border: 2px SOLID #57b9ea;
+            border-radius: 10px;
+            box-shadow: 0 0 10p #57b9ea;
+            ;
+        }
+        /* تنسيق العنوان والأيقونة */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #081f38;
+        }
+
+            .header i {
+                margin-right: 10px; /* تعديل هنا لتغيير مكان الأيقونة إلى اليسار */
+            }
+
+            .header h2 {
+                margin: 0;
+                font-size: 24px;
+            }
+        /* تنسيق مجموعات النموذج */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        /* تنسيق مجموعة أزرار التبديل */
+        .btn-group-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        /* تنسيق الأزرار */
+        .btn {
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #081f38;
+            border: none;
+        }
+
+            .btn.active {
+                background-color: #081f38;
+                color: white;
+            }
+        /* تنسيق زر الإرسال */
+        .btn-block {
+            width: 50%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #0c2d50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.3em;
+            margin-right: 95px;
+        }
+
+            .btn-block:hover {
+                background-color: #57b9ea;
+            }
+        /* تنسيق حقول الإدخال */
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #57b9ea;
+            font-size: 22px;
+            ;
+        }
+
+            input[type="text"]::placeholder,
+            input[type="password"]::placeholder {
+                color: #0c2d50; /* لون النص الذي ترغب في استخدامه لـ placeholder */
+            }
+        /* تنسيق الجدول */
+        table {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+            table td {
+                padding: 5px;
+            }
+
+        H2 {
+            color: #0c2d50;
+            font-size: 50px;
+        }
+
+        i {
+            color: #0c2d50;
+        }
+    </style>
+</head>
+<body>
+    <!-- حاوية المحتوى الرئيسية -->
+    <div class="container">
+        <!-- عنوان النموذج مع الأيقونة -->
+        <div class="header">
+            <h1>
+                تسجيل الدخول</h2>
+                <i class="fas fa-users fa-2x"></i>
+
+        </div>
+        <!-- بداية النموذج -->
+        <form action="login" method="post">
+            <!-- حقل البريد الإلكتروني -->
+            <div class="form-group">
+                <input type="text" name="Email" class="form-control" placeholder="البريد الإلكتروني" />
+            </div>
+            <!-- حقل كلمة المرور -->
+            <div class="form-group">
+                <input type="password" name="Password" class="form-control" placeholder="كلمة المرور" />
+            </div>
+            <!-- حقل المسمى الوظيفي -->
+            <div class="form-group">
+                <input type="text" name="Position" class="form-control" placeholder="المسمى الوظيفي" id="positionText" readonly />
+            </div>
+            <!-- مجموعة أزرار الاختيار للمسمى الوظيفي -->
+            <div class="form-group">
+                <div class="btn-group-toggle">
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="btn" style="background-color:#ffffff;">
+                                    <input type="radio" name="position" value="التمريض" onclick="updateTextField(this)"> التمريض
+                                </label>
+                            </td>
+                            <td>
+                                <label class="btn" style="background-color:#ffffff;">
+                                    <input type="radio" name="position" value="مدير المخزن" onclick="updateTextField(this)"> مدير المخزن
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="btn" style="background-color:#ffffff;">
+                                    <input type="radio" name="position" value="امين المخزن" onclick="updateTextField(this)"> امين المخزن
+                                </label>
+                            </td>
+                            <td>
+                                <label class="btn" style="background-color:#ffffff;">
+                                    <input type="radio" name="position" value="كاتب الشطب" onclick="updateTextField(this)"> كاتب الشطب
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label class="btn" style="background-color:#ffffff;">
+                                    <input type="radio" name="position" value="مدير المستشفي" onclick="updateTextField(this)"> مدير المستشفي
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- زر الإرسال -->
+            <div class="form-group">
+                <button type="submit" class="btn-block">تسجيل الدخول</button>
+            </div>
+        </form>
+    </div>
+    <!-- جافا سكريبت لتحديث حقل المسمى الوظيفي عند اختيار زر -->
+    <script>
+        function updateTextField(radio) {
+            document.getElementById('positionText').value = radio.value;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Selected Tools";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Tools</title>
+    <!-- Add your CSS and styling here -->
+</head>
+<body>
+    <h1>Selected Tools</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Tool</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < ViewBag.SelectedTools.Length; i++)
+            {
+                <tr>
+                    <td>@ViewBag.SelectedTools[i]</td>
+                    <td>@ViewBag.Quantities[i]</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,193 @@
+﻿@model string
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>تقرير عن @ViewBag.Title</title>
+
+    <link rel="stylesheet" href="~/css/toolreport.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="reportTitle">تقرير عن @Html.Raw(Model)</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <h2>Bar Chart</h2>
+                    <p class="description" id="barChartDescription"></p>
+                    <canvas id="barChart" class="chart-canvas"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <h2>Pie Chart</h2>
+                    <p class="description" id="pieChartDescription"></p>
+                    <canvas id="pieChart" class="chart-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <h2>Line Chart</h2>
+                    <p class="description" id="lineChartDescription"></p>
+                    <canvas id="lineChart" class="chart-canvas"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <h2>Doughnut Chart</h2>
+                    <p class="description" id="doughnutChartDescription"></p>
+                    <canvas id="doughnutChart" class="chart-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Data Table</h2>
+            <table id="DataTable">
+                <thead>
+                    <tr>
+                        <th>Clinic Name</th>
+                        <th>Date</th>
+                        <th>Outgoing Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data rows will be added dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button id="printButton" class="print-btn"><i class="fas fa-print"></i></button>
+
+    <script type="text/javascript">
+        $(function () {
+            var toolName = "@Html.Raw(Model)"; // Retrieve tool name passed from controller
+
+            // Set the tool name in the heading dynamically
+            $('#reportTitle').text('تقرير للربع الاول من السنه عن ' + toolName);
+            renderTable();
+            renderChart('bar', 'barChart', '#barChartDescription');
+            renderChart('pie', 'pieChart', '#pieChartDescription');
+            renderChart('line', 'lineChart', '#lineChartDescription');
+            renderChart('doughnut', 'doughnutChart', '#doughnutChartDescription');
+
+            function renderChart(chartType, canvasId, descriptionId) {
+                $.ajax({
+                    type: "POST",
+                    url: "/SelectedTools/a1FIRSTQUARTER",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("Received data for", chartType, "chart:", data);
+
+                        var clinicNames = data.map(item => item.clinicName);
+                        var outgoingQuantities = data.map(item => item.outgoingQuantity || 0); // Use 0 if outgoing quantity is undefined
+                        var dates = data.map(item => item.date); // Extract dates from the data
+
+                        // Update the description text
+                        $(descriptionId).text(`This chart represents the ${chartType} data for ${toolName}.`);
+
+                        // Render the chart
+                        var ctx = document.getElementById(canvasId).getContext('2d');
+                        new Chart(ctx, {
+                            type: chartType,
+                            data: {
+                                labels: clinicNames,
+                                datasets: [{
+                                    label: 'Outgoing Quantity',
+                                    data: outgoingQuantities,
+                                    backgroundColor: generateRandomColors(outgoingQuantities.length),
+                                    borderColor: 'rgba(255, 99, 132, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                },
+                                plugins: {
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function (context) {
+                                                var label = context.dataset.label || '';
+                                                if (label) {
+                                                    label += ': ';
+                                                }
+                                                if (context.parsed.y !== null) {
+                                                    label += outgoingQuantities[context.dataIndex] + ' (' + clinicNames[context.dataIndex] + ')';
+                                                }
+                                                return label;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    },
+                    error: function (err) {
+                        console.error("Error occurred:", err);
+                    }
+                });
+            }
+
+            function renderTable() {
+                $.ajax({
+                    type: "POST",
+                    url: "/SelectedTools/a1FIRSTQUARTER",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("Received data for table:", data);
+
+                        var tableBody = $('#DataTable tbody');
+                        tableBody.empty(); // Clear previous data
+                        for (var i = 0; i < data.length; i++) {
+                            var row = $('<tr>');
+                            row.append($('<td>').text(data[i].clinicName));
+                            row.append($('<td>').text(data[i].date));
+                            row.append($('<td>').text(data[i].outgoingQuantity || 0)); // Add default value if outgoingQuantity is undefined
+                            tableBody.append(row);
+                        }
+
+                        // Calculate and set the height of the table dynamically
+                        var tableHeight = $('#DataTable')[0].scrollHeight;
+                        $('#DataTable').css('height', tableHeight + 'px');
+                    },
+                    error: function (err) {
+                        console.error("Error occurred:", err);
+                    }
+                });
+            }
+
+            // Function to generate random colors
+            function generateRandomColors(count) {
+                var colors = [];
+                for (var i = 0; i < count; i++) {
+                    var color = 'rgba(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ', 0.6)';
+                    colors.push(color);
+                }
+                return colors;
+            }
+
+            $('#printButton').on('click', function () {
+                window.print();
+            });
+        });
+    </script>
+
+</body>
+</html>

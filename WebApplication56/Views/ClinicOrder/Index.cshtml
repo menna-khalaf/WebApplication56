@@ -1,0 +1,127 @@
+﻿@model IEnumerable<WebApplication56.Models.Order>
+ 
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrdDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClinicNameNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+                <td>
+                    @if (item.Status == false)
+                    {
+                        <button id="waitingButton-@item.OrdId" style="background-color: yellow;" onclick="updateStatus('@item.OrdId')">Waiting</button>
+                    }
+                    else
+                    {
+                        <button style="background-color: green;" disabled>Completed</button>
+                    }
+                </td>
+
+  
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ClinicNameNavigation.ClinicName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailNavigation.Email)
+            </td>
+
+
+
+
+
+
+                <td>
+                    <input type="number" id="outgoingQuantity-@item.OrdId" />
+                    <button onclick="updateQuantity('@item.OrdId')">Update</button>
+                </td>
+
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OrdId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrdId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrdId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+    function updateStatus(ordId) {
+        // Send an AJAX request to update the status
+        $.ajax({
+            type: 'POST',
+            url: '/ClinicOrder/UpdateStatus',
+            data: { ordId: ordId },
+            success: function (response) {
+                // Update the button style if needed
+                if (response.success) {
+                    $('#waitingButton-' + ordId).css('background-color', 'green').text('Completed').prop('disabled', true);
+                }
+            },
+            error: function (error) {
+                console.error('Error updating status:', error);
+            }
+        });
+    }
+
+
+    function updateQuantity(ordId) {
+        var outgoingQuantity = $('#outgoingQuantity-' + ordId).val();
+        // Send an AJAX request to update the outgoing quantity
+        $.ajax({
+            type: 'POST',
+            url: '/ClinicOrder/UpdateQuantity',
+            data: { ordId: ordId, outgoingQuantity: outgoingQuantity },
+            success: function (response) {
+                // Handle success response if needed
+            },
+            error: function (error) {
+                console.error('Error updating quantity:', error);
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+ 
+</script>

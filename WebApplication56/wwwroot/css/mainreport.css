@@ -1,0 +1,153 @@
+﻿body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(to right, #5fbde1, #e0e7ef, #d3e3ee);
+    direction: rtl;
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    padding-top: 20px; /* Add top padding */
+    margin: 0;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.btn-group-toggle {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center items horizontally */
+    flex-wrap: wrap; /* Wrap items if they overflow */
+}
+
+    .btn-group-toggle ul {
+        list-style: none; /* Remove default list style */
+        padding: 0;
+        margin: 0;
+    }
+
+        .btn-group-toggle ul > li {
+            display: inline-block; /* Inline block for horizontal alignment of span elements */
+        }
+
+.large-btn {
+    display: inline-block; /* Inline block for horizontal alignment */
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Increased font size */
+    font-weight: bold; /* Bold font */
+    transition: background-color 0.3s, transform 0.3s, color 0.3s;
+    margin: 5px; /* Adjust margin as needed */
+    text-align: center; /* Center align text horizontally */
+    position: relative; /* For positioning nested ul */
+}
+
+    .large-btn:hover {
+        background-color: #fff;
+        transform: scale(1.05);
+        color: #0056b3;
+        font-size: 20px; /* Larger font size on hover */
+        font-weight: bold; /* Bold font on hover */
+    }
+
+    .large-btn .arrow {
+        margin-right: 10px;
+        transition: transform 0.3s;
+    }
+
+        .large-btn .arrow.open {
+            transform: rotate(90deg);
+        }
+
+.nested-list, .dropdown-menu {
+    display: none; /* Hidden by default */
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #f9f9f9; /* Dropdown background color */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    position: absolute; /* Position absolutely within span */
+    left: 0;
+    right: 0;
+    text-align: left; /* Ensure text aligns left */
+    z-index: 1;
+}
+
+    .nested-list.open, .dropdown-menu.open {
+        display: block;
+    }
+
+    .nested-list li, .dropdown-menu li {
+        margin: 5px 0;
+    }
+
+        .nested-list li a, .dropdown-menu li button, .dropdown-menu li {
+            display: block;
+            text-decoration: none; /* Remove underline */
+            color: #333;
+            font-weight: bold;
+            font-size: 16px; /* Increased font size */
+            width: 100%; /* Full width */
+            text-align: left; /* Left align text */
+            padding: 5px; /* Padding for better appearance */
+            box-sizing: border-box;
+        }
+
+            .nested-list li:hover a, .dropdown-menu li:hover button, .dropdown-menu li:hover {
+                font-weight: bold;
+                font-size: 18px; /* Larger font size on hover */
+                color: #0056b3; /* Font color on hover */
+            }
+
+.search-bar {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #0056b3; /* Border color */
+    border-radius: 5px;
+    font-size: 14px;
+    color: #0056b3; /* Font color */
+}
+
+a {
+    text-decoration: none; /* Remove underline */
+    color: #0056b3; /* Font color */
+}
+
+    a:hover {
+        color: #0056b3; /* Font color on hover */
+    }
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}

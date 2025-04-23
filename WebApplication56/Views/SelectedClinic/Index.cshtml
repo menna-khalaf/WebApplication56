@@ -1,0 +1,158 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+            background-color: white;
+            overflow-y: scroll;
+        }
+
+        .sidenav {
+            margin-top: 5%;
+            height: 100%;
+            width: 300px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #46b5e5;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            border-radius: 40px; /* تعديل هنا */
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #504e53;
+        }
+
+            .sidenav a {
+                padding: 12px 16px;
+                text-decoration: none;
+                font-size: 22px; /* تغيير حجم الخط هنا */
+                color: #3c5d78;
+                display: block;
+                transition: 0.3s;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-weight: bold;
+                text-transform: uppercase;
+                border-radius: 20px;
+            }
+
+                .sidenav a:hover {
+                    background-color: #b5d5d8;
+                    color: #e49773;
+                }
+
+            .sidenav .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+                color: #3b3a3a;
+            }
+
+            .sidenav .dropdown-content {
+                display: none;
+                background-color: #fbf6fa;
+                padding: 12px;
+                max-height: 200px;
+                color: #3c5d78;
+                border-radius: 20px;
+                transition: max-height 0.5s; /* Add transition */
+            }
+
+                .sidenav .dropdown-content.monthly {
+                    overflow-y: scroll;
+                }
+
+            .sidenav .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            .sidenav .dropdown-content a {
+                color: #3c5d78;
+            }
+
+                .sidenav .dropdown-content a:hover {
+                    color: #46b5e5;
+                }
+
+            /* Adjust max-height when hovering over "ربع سنوي" */
+            .sidenav .dropdown:nth-child(3):hover .dropdown-content {
+                max-height: 100px; /* Adjust the height as needed */
+            }
+
+        @@media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+                .sidenav a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="dropdown">
+            <a asp-action="A1">سنويًا</a>
+    </div>
+    <div class="dropdown">
+        <a href="#">نصف سنوي</a>
+        <div class="dropdown-content">
+                <a asp-action="A1FIRSTHALF">نصف أول</a>
+                <a asp-action="A1SECONDHALF">نصف ثاني</a>
+        </div>
+    </div>
+    <div class="dropdown">
+            <a>ربع سنوي</a>
+        <div class="dropdown-content">
+                <a asp-action="A1QUARTERFIRST">ربع أول</a>
+                <a asp-action="A1QUARTERSECOND">ربع ثاني</a>
+                <a asp-action ="A1QUARTERTHIRD">ربع ثالث</a>
+                <a asp-action="A1QUARTERFOURTH">ربع رابع</a> <!-- Add this line -->
+        </div>
+    </div>
+    <br />
+    <div class="dropdown">
+        <a href="#">شهريًا</a>
+        <div class="dropdown-content monthly">
+                <a asp-action="A1MonthJANUARY">يناير</a>
+                <a asp-action="A1MonthFebruary">فبراير</a>
+                <a asp-action="A1MonthMARCH">مارس</a>
+                <a asp-action="A1MonthApril">أبريل</a>
+                <a asp-action="A1MonthMAY">مايو</a>
+                <a asp-action="A1MonthJUNE">يونيو</a>
+                <a asp-action="A1MonthJULY">يوليو</a>
+                <a asp-action="A1MonthAUGUST">أغسطس</a>
+                <a asp-action="A1MonthSEPTEMBER">سبتمبر</a>
+                <a asp-action="A1MonthOCTOBER">أكتوبر</a>
+                <a asp-action="A1MonthNOVEMBER">نوفمبر</a>
+                <a asp-action="A1MonthDecember">ديسمبر</a>
+        </div>
+    </div>
+</div>
+<span style="font-size: 40px; cursor: pointer" onclick="openNav()">&#9776; مدة الجرد</span>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "300px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+﻿@model WebApplication56.Models.Order
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Order</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            direction: rtl; /* Right-to-left text direction */
+            background-image: url('/css/image/entryboym.png'); /* Background image path */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+        }
+
+        .card-container {
+            margin-top: 20px;
+            max-width: 400px; /* Adjusted maximum width */
+            width: 100%;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center;
+            gap: 20px; /* Add space between elements */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-right: 70px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px; /* Adjusted maximum width */
+            margin: 0 auto; /* Center align the form */
+            padding: 20px;
+            border-radius: 15px; /* Add border radius */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff; /* Set background color to white */
+            margin-left: -6px; /* Move form 6px to the left */
+        }
+
+            .form-container:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+
+        .form-control {
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            font-size: 0.875rem; /* Reduced font size */
+        }
+
+            .form-control:focus {
+                border-image: linear-gradient(to right, #6a11cb, #2575fc) 1;
+                box-shadow: 0 0 5px rgba(102, 51, 153, 0.5);
+            }
+
+        .rounded-input {
+            border-radius: 10px;
+        }
+
+        .text-right-input {
+            text-align: right;
+        }
+
+        .label-3d {
+            font-size: 1rem; /* Adjusted font size */
+            font-weight: bold; /* Make label text bold */
+            color: #0c1c7a;
+            text-shadow: 1px 1px 2px #aaa, 0 0 25px #ccc, 0 0 5px #bbb;
+            margin-bottom: 5px;
+        }
+
+        .h4-3d {
+            font-size: 1.75rem;
+            font-weight: bold; /* Make heading text bold */
+            color: #fff;
+            text-shadow: 2px 2px 4px #000;
+            background-color: #5fbde1;
+            padding: 0;
+            display: inline-block;
+            margin-bottom: 20px; /* Add margin below the heading */
+            width: 100%;
+            text-align: center;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align items to the left */
+            margin-bottom: 10px; /* Reduced margin */
+            transition: background-color 0.3s ease-in-out;
+        }
+
+            .form-group:hover {
+                background-color: #f8f9fa;
+            }
+
+        .btn {
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            font-size: 0.875rem; /* Reduced font size */
+            padding: 8px 16px; /* Adjusted padding */
+        }
+
+            .btn:hover {
+                background-color: #5fbde1;
+                transform: scale(1.05);
+            }
+
+        .btn-secondary {
+            margin-top: 10px;
+        }
+
+        .btn-rounded {
+            border-radius: 15px;
+        }
+
+        h4 {
+            margin: 0;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .float-left {
+            float: left; /* Float elements to the left */
+        }
+
+        .text-center {
+            text-align: center; /* Center-align text */
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <h4 class="h4-3d">تسجيل اوامر التوريد</h4>
+        <div class="form-container">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label class="control-label label-3d">رقم الطلب</label>
+                    <input asp-for="OrdId" class="form-control rounded-input" readonly>
+                    <span asp-validation-for="OrdId" class="text-danger"></span>
+                </div>
+                <div class="form-group float-left">
+                    <label class="control-label label-3d">تاريخ الطلب</label>
+                    <input asp-for="OrdDate" class="form-control rounded-input" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    <span asp-validation-for="OrdDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label label-3d">العياده</label>
+                    <input asp-for="ClinicName" class="form-control rounded-input" id="ClinicName" disabled />
+                </div>
+                <div class="form-group">
+                    <label class="control-label label-3d">البريد الالكتروني</label>
+                    <!-- Use ViewBag.UserEmail to access the user's email -->
+                    <input type="text" class="form-control rounded-input" value="@ViewBag.UserEmail" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="control-label label-3d">نوع الطلب</label>
+                    <input id="Type" asp-for="Type" type="text" class="form-control rounded-input" value="توريد" readonly>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center" style="padding-right:80px;">
+                    <input type="submit" value="تسجيل" class="btn btn-primary btn-rounded" style="background-color: #5fbde1; padding-right:25px; font-size:25px; padding-left:25px;" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Decode HTML entities in JavaScript
+            function decodeHtml(html) {
+                var txt = document.createElement('textarea');
+                txt.innerHTML = html;
+                return txt.value;
+            }
+
+            // Retrieve clinic name from session
+            var clinicName = decodeHtml('@Context.Session.GetString("SelectedClinic")');
+            // Set the value of the input field
+            $('#ClinicName').val(clinicName);
+        });
+    </script>
+
+    @section Scripts {
+        <script>
+            $(function () {
+                // Fetch the initial order ID from the server
+                fetchLatestOrderID();
+
+                // Function to fetch the latest order ID from the server
+                function fetchLatestOrderID() {
+                    // AJAX request to fetch the latest order ID
+                    $.ajax({
+                        url: '/ClinicOrder/GetLatestOrderID', // Endpoint to fetch the latest order ID
+                        type: 'GET',
+                        success: function (data) {
+                            // Update the ordId field with the fetched order ID
+                            $('#OrdId').val(data);
+                        },
+                        error: function () {
+                            console.log('Error fetching latest order ID');
+                        }
+                    });
+                }
+            });
+        </script>
+    }
+</body>
+</html>

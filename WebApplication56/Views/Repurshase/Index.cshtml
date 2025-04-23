@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<WebApplication56.Models.Tool>
+
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Tools</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .tool-card {
+            border: 1px solid #041498;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .tool-card:hover {
+                transform: scale(1.05);
+            }
+
+            .tool-card .card-body {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                height: 150px;
+            }
+
+        .card-title {
+            color: #041498;
+            font-size: larger;
+            background-color: white;
+            padding: 5px 0px;
+            border-radius: 5px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #8aceee; /* First half color */
+        }
+
+        .card-text {
+            color: #041498;
+            font-size: larger;
+            background-color: #8aceee;
+            padding: 5px 0px;
+            border-radius: 5px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #041498; /* Second half color */
+            color: white; /* Change text color for contrast */
+        }
+
+        .root {
+            color: #8aceee;
+            font-size: larger;
+        }
+
+        .header {
+            text-align: center;
+            color: #041498;
+            font-size: xx-large;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">بيان بالادوات لاعاده الشراء</div>
+        <div class="row">
+            @foreach (var tool in Model)
+            {
+                <div class="col-md-4">
+                    <div class="tool-card">
+                        <div class="card-body">
+                            <div class="card-title">Tool Name: @tool.ToolName</div>
+                            <div class="card-text">Store Quantity: @tool.Balance</div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

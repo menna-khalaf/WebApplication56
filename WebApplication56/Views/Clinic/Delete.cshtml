@@ -1,0 +1,14 @@
+﻿@model WebApplication56.Models.Clinic
+
+<div class="container">
+    <h2>Delete Clinic</h2>
+    <h3>Are you sure you want to delete this clinic?</h3>
+    <div>
+        <h4>@Model.ClinicName</h4>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="ClinicId" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>

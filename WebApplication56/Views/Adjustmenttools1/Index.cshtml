@@ -1,0 +1,439 @@
+﻿@model IEnumerable<WebApplication56.Models.Adjustmenttool>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+
+<!-- Add form with CSRF token -->
+<form id="activateForm">
+    @Html.AntiForgeryToken()
+</form>
+
+
+
+
+
+
+
+
+
+
+<div class="search-container">
+    <div class="input-group mb-3 search-bar">
+        <input type="text" id="searchInput" class="form-control" placeholder="بحث ">
+        <div class="input-group-append">
+            <button id="searchButton" class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-funnel"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for search options -->
+<div id="searchOptionsModal" class="search-options-modal" style="direction:rtl">
+    <div class="search-options-content">
+        <h2 style="color:#0c1c7a;">فلتره حسب:</h2>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="searchByTool">
+            <label class="form-check-label" for="searchByTool">اداه</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="searchById">
+            <label class="form-check-label" for="searchById">رقم الطلب</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="searchByDate">
+            <label class="form-check-label" for="searchByDate">التاريخ</label>
+        </div>
+        <button class="btn btn-primary btn-ok" onclick="hideSearchOptions()" style="background-color:#0c1c7a; display:centre;">تم</button>
+    </div>
+</div>
+
+<div class="content-wrapper mt-5">
+    <table class="table table-striped rounded-table">
+        <thead>
+            <tr>
+                <th style=" background-color:#47b5df; color:white;">
+                    <button id="sortAdjId" class="btn btn-link" style="color:white;">رقم الطلب <i class="bi bi-sort-down"></i></button>
+                </th>
+                <th style=" background-color:#47b5df; color:white;">القيمه المخزنه</th>
+                <th style=" background-color:#47b5df; color:white;">القيمه الفعليه</th>
+                <th style=" background-color:#47b5df; color:white;"> الفرق</th>
+
+                <th style=" background-color:#47b5df; color:white;">
+                    <button id="sortAdjDate" class="btn btn-link" style="color:white;">التاريخ<i class="bi bi-sort-down"></i></button>
+                </th>
+                <th style=" background-color:#47b5df; color:white;">البريد الالكتروني</th>
+                <th style=" background-color:#47b5df; color:white;">اسم الاداه</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.AdjId)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Balance)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ActualQuantity)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Difference)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Adj.AdjDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Adj.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ToolNameNavigation.ToolName)</td>
+                    <td>
+
+                        <button class="btn btn-success activate-button" data-id="@item.AdjId" data-toolname="@item.ToolNameNavigation.ToolName">اعتماد</button>
+                        <a asp-action="Edit" asp-route-adjId="@item.AdjId" asp-route-toolName="@item.ToolNameNavigation.ToolName" class="btn btn-warning" title="Edit">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.AdjId" class="btn btn-info" title="Details">
+                            <i class="bi bi-info-circle"></i>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.AdjId" class="btn btn-danger" title="Delete">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+
+                 
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInput');
+            const rows = document.querySelectorAll('tbody tr');
+            const sortAdjIdButton = document.getElementById('sortAdjId');
+            const sortAdjDateButton = document.getElementById('sortAdjDate');
+            const searchButton = document.getElementById('searchButton');
+            const searchOptionsModal = document.getElementById('searchOptionsModal');
+            const searchByTool = document.getElementById('searchByTool');
+            const searchById = document.getElementById('searchById');
+            const searchByDate = document.getElementById('searchByDate');
+
+            searchButton.addEventListener('click', function () {
+                searchOptionsModal.style.display = 'block';
+            });
+
+            document.querySelector('.btn-ok').addEventListener('click', function () {
+                searchOptionsModal.style.display = 'none';
+            });
+
+            searchInput.addEventListener('input', function () {
+                applyFilter();
+            });
+
+            function applyFilter() {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                rows.forEach(row => {
+                    let shouldDisplay = true;
+                    if (searchById.checked) {
+                        const id = row.querySelector('td:first-child').textContent.trim().toLowerCase();
+                        shouldDisplay = shouldDisplay && id.includes(searchTerm);
+                    }
+                    if (searchByDate.checked) {
+                        const date = row.querySelector('td:nth-child(6)').textContent.trim().toLowerCase();
+                        shouldDisplay = shouldDisplay && date.includes(searchTerm);
+                    }
+                    if (searchByTool.checked) {
+                        const toolName = row.querySelector('td:nth-child(8)').textContent.trim().toLowerCase();
+                        shouldDisplay = shouldDisplay && toolName.includes(searchTerm);
+                    }
+                    row.style.display = shouldDisplay ? 'table-row' : 'none';
+                });
+            }
+
+            let sortOrder = true;
+
+            sortAdjIdButton.addEventListener('click', function () {
+                sortOrder = !sortOrder;
+                const sortedRows = Array.from(rows).sort((a, b) => {
+                    const idA = parseInt(a.querySelector('td:first-child').textContent.trim());
+                    const idB = parseInt(b.querySelector('td:first-child').textContent.trim());
+                    return sortOrder ? idA - idB : idB - idA;
+                });
+                sortedRows.forEach(row => document.querySelector('tbody').appendChild(row));
+                this.querySelector('i').classList.toggle('bi-sort-down');
+                this.querySelector('i').classList.toggle('bi-sort-up');
+            });
+
+            sortAdjDateButton.addEventListener('click', function () {
+                sortOrder = !sortOrder;
+                const sortedRows = Array.from(rows).sort((a, b) => {
+                    const dateA = new Date(a.querySelector('td:nth-child(6)').textContent.trim());
+                    const dateB = new Date(b.querySelector('td:nth-child(6)').textContent.trim());
+                    return sortOrder ? dateA - dateB : dateB - dateA;
+                });
+                sortedRows.forEach(row => document.querySelector('tbody').appendChild(row));
+                this.querySelector('i').classList.toggle('bi-sort-down');
+                this.querySelector('i').classList.toggle('bi-sort-up');
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const rows = document.querySelectorAll('tbody tr');
+        const sortAdjIdButton = document.getElementById('sortAdjId');
+        const sortAdjDateButton = document.getElementById('sortAdjDate');
+        const searchButton = document.getElementById('searchButton');
+        const searchOptionsModal = document.getElementById('searchOptionsModal');
+        const searchByTool = document.getElementById('searchByTool');
+        const searchById = document.getElementById('searchById');
+        const searchByDate = document.getElementById('searchByDate');
+
+        searchButton.addEventListener('click', function () {
+            searchOptionsModal.style.display = 'block';
+        });
+
+        document.querySelector('.btn-ok').addEventListener('click', function () {
+            searchOptionsModal.style.display = 'none';
+        });
+
+        searchInput.addEventListener('input', function () {
+            applyFilter();
+        });
+
+        function applyFilter() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            rows.forEach(row => {
+                let shouldDisplay = true;
+                if (searchById.checked) {
+                    const id = row.querySelector('td:first-child').textContent.trim().toLowerCase();
+                    shouldDisplay = shouldDisplay && id.includes(searchTerm);
+                }
+                if (searchByDate.checked) {
+                    const date = row.querySelector('td:nth-child(6)').textContent.trim().toLowerCase();
+                    shouldDisplay = shouldDisplay && date.includes(searchTerm);
+                }
+                if (searchByTool.checked) {
+                    const toolName = row.querySelector('td:nth-child(7)').textContent.trim().toLowerCase();
+                    shouldDisplay = shouldDisplay && toolName.includes(searchTerm);
+                }
+                row.style.display = shouldDisplay ? 'table-row' : 'none';
+            });
+        }
+
+        let sortOrder = true;
+
+        sortAdjIdButton.addEventListener('click', function () {
+            sortOrder = !sortOrder;
+            const sortedRows = Array.from(rows).sort((a, b) => {
+                const idA = parseInt(a.querySelector('td:first-child').textContent.trim());
+                const idB = parseInt(b.querySelector('td:first-child').textContent.trim());
+                return sortOrder ? idA - idB : idB - idA;
+            });
+            sortedRows.forEach(row => document.querySelector('tbody').appendChild(row));
+            this.querySelector('i').classList.toggle('bi-sort-down');
+            this.querySelector('i').classList.toggle('bi-sort-up');
+        });
+
+        sortAdjDateButton.addEventListener('click', function () {
+            sortOrder = !sortOrder;
+            const sortedRows = Array.from(rows).sort((a, b) => {
+                const dateA = new Date(a.querySelector('td:nth-child(5)').textContent.trim());
+                const dateB = new Date(b.querySelector('td:nth-child(5)').textContent.trim());
+                return sortOrder ? dateA - dateB : dateB - dateA;
+            });
+            sortedRows.forEach(row => document.querySelector('tbody').appendChild(row));
+            this.querySelector('i').classList.toggle('bi-sort-down');
+            this.querySelector('i').classList.toggle('bi-sort-up');
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.activate-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const adjId = this.getAttribute('data-id');
+                const toolName = this.getAttribute('data-toolname');
+                const token = document.querySelector('input[name="__RequestVerificationToken"]').value; // Get the CSRF token value
+
+                // Make an AJAX request to update the Active column
+                fetch('/Adjustmenttools1/ActivateRow', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': token // Include the CSRF token in the request headers
+                    },
+                    body: JSON.stringify({ adjId: adjId, toolName: toolName })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Row updated successfully');
+                            location.reload(); // Reload the page to see the changes
+                        } else {
+                            alert('Failed to update row');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    });
+
+</script>
+
+
+
+
+
+
+
+
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1513759565281-9f6d8a5f8a36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDR8fGJhY2tncm91bmR8ZW58MHx8fHwxNjg3NTY2NzE0&ixlib=rb-1.2.1&q=80&w=1080');
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px; /* Add some space below the search bar */
+    }
+
+    .input-group {
+        width: 100%;
+        max-width: 400px; /* Adjust max-width as per your preference */
+        overflow: hidden;
+        border-radius: 20px; /* Border radius for a rounded appearance */
+        background-color: #f2f2f2; /* Background color */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Box shadow for a subtle effect */
+        border: 2px solid #0c1c7a; /* Border color for the entire input group */
+    }
+
+        .input-group .form-control,
+        .input-group .btn-outline-secondary {
+            border: none; /* Remove default border */
+            border-color: #0c1c7a; /* Border color for search input and button */
+        }
+
+        .input-group .form-control {
+            border-radius: 20px 0 0 20px; /* Border radius for input field */
+            padding: 10px 15px; /* Padding for input field */
+            font-weight: bold; /* Bold text inside input field */
+        }
+
+        .input-group .btn-outline-secondary {
+            border-radius: 0 20px 20px 0; /* Border radius for button */
+            padding: 8px; /* Padding for the search button */
+            background-color: #0c1c7a; /* Background color for the button */
+            color: #fff; /* Text color for the button */
+        }
+
+    .search-options-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+        z-index: 1000; /* Ensure it appears above other elements */
+    }
+
+    .search-options-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border: 2px solid #0c1c7a;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        width: 300px;
+    }
+
+        .search-options-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .search-options-content .form-check {
+            margin-bottom: 10px;
+        }
+
+        .search-options-content .btn-ok {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+    .rounded-table {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-link {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-warning {
+        background-color: white;
+        border-color: white;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .rounded-pill {
+        border-radius: 25px !important;
+    }
+
+    .content-wrapper {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    thead {
+        background-color: #47b5df;
+        color: white;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">

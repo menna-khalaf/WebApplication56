@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication56</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication56.styles.css" asp-append-version="true" />
+    <style>
+        /* WebApplication56.styles.css */
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e3e6f0;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            padding: 1rem;
+        }
+
+        .navbar-brand img {
+            width: 50px; /* Set the width of the image */
+            height: 50px; /* Set the height of the image */
+            border-radius: 50%; /* Make the image circular */
+        }
+
+        .navbar-brand span {
+            font-weight: bold; /* Bold font */
+            font-size: 1.5rem; /* Larger font size */
+            margin-left: 0.5rem; /* Space between image and text */
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1.25rem; /* Larger font size */
+            font-weight: bold; /* Bold font */
+            color: #5a5c69 !important;
+            padding: 1rem 1.5rem; /* More space between elements */
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #4e73df !important;
+            }
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        /* Add additional padding to the main content */
+        main {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    @{
+        var controller = ViewContext.RouteData.Values["controller"].ToString();
+        var action = ViewContext.RouteData.Values["action"].ToString();
+
+    }
+    @{
+        var excludedControllersActions = new List<(string Controller, string Action)>
+    {
+    ("Home", "Index"),
+    ("Users", "login"),
+    ("Users", "Create"),
+    ("Tools", "Index"),
+    ("reportlayout", "Index"),
+    ("Report", "Index"),
+    ("Clinic", "Index"),
+    ("ClinicOrder", "Create"),
+    ("Adjustments", "Create"),
+    ("Adjustmenttools1", "Index"),
+    ("Adjustments", "Index"),
+    ("Orders", "Index"),
+    ("Orders", "Create"),
+    ("OrderedTools", "Index"),
+    ("Repurshase", "Index"),
+    ("cliniclayout", "Index"),
+    ("Adjustmenttools1", "Delete"),
+    ("Adjustmenttools1", "Details"),
+    ("Adjustmenttools1", "Edit ")
+    };
+
+        bool isExcluded = excludedControllersActions.Any(e => e.Controller == controller && e.Action == action);
+    }
+
+    @if (!isExcluded)
+    {
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm">
+                <div class="container-fluid">
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        <img src="~/images/logoamended4.PNG" alt="Logo" class="img-fluid rounded-circle me-2" style="width: 70px; height: 70px;">
+                        <span class="ms-2" style="font-weight: bold; font-size: 1.5rem;">Dentastock</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">الصفحه الرئيسيه</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Delete">حذف المستخدم</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Clinic" asp-action="Index">العيادات</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Create">تسجيل اوامر الشراء</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="OrderedTools" asp-action="Index">الموافقه علي اوامر التوريد</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Adjustments" asp-action="Create">التسويات</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Report" asp-action="Index">التقارير</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    }
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

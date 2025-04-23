@@ -1,0 +1,218 @@
+﻿@model WebApplication56.Models.Order
+
+@{
+    ViewBag.Title = "Create";
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/WebApplication56.styles.css" asp-append-version="true" />
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        direction: rtl; /* Right-to-left text direction */
+        background-image: url('/css/image/entryboym.png'); /* Corrected Background image path */
+        background-size: cover; /* Cover the entire background */
+        background-position: center; /* Center the background image */
+    }
+
+    .card-container {
+        margin-top: 20px;
+        max-width: 400px; /* Adjusted maximum width */
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+        gap: 20px; /* Add space between elements */
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+       /*  padding: 10px; */
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-right:70px;
+    }
+
+    .image-container {
+        width: 100%;
+        text-align: center; /* Center the image */
+        margin-bottom: 20px; /* Add margin below the image */
+    }
+
+    .img-fluid {
+        width: 100px; /* Adjust image width */
+        height: auto;
+        border-radius: 15px; /* Add border radius to the image */
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 400px; /* Adjust maximum width as needed */
+        margin: 0 auto; /* Center align the form */
+        padding: 20px;
+        border-radius: 15px; /* Add border radius */
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff; /* Set background color to white */
+        margin-left: -6px; /* Move form 6px to the left */
+    }
+
+        .form-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+    .form-control {
+        transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        font-size: 1rem;
+    }
+
+        .form-control:focus {
+            border-image: linear-gradient(to right, #6a11cb, #2575fc) 1;
+            box-shadow: 0 0 5px rgba(102, 51, 153, 0.5);
+        }
+
+    .rounded-input {
+        border-radius: 10px;
+    }
+
+    .text-right-input {
+        text-align: right;
+    }
+
+    .label-3d {
+        font-size: 1.25rem;
+        font-weight: bold; /* Make label text bold */
+        color: #0c1c7a;
+        text-shadow: 1px 1px 2px #aaa, 0 0 25px #ccc, 0 0 5px #bbb;
+    }
+
+    .h4-3d {
+        font-size: 1.75rem;
+        font-weight: bold; /* Make heading text bold */
+        color: #fff;
+        text-shadow: 2px 2px 4px #000;
+        background-color: #5fbde1;
+        padding: 0;
+        display: inline-block;
+        margin-bottom: 20px; /* Add margin below the heading */
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        .form-group:hover {
+            background-color: #f8f9fa;
+        }
+
+    .btn {
+        transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+        .btn:hover {
+            background-color: #5fbde1;
+            transform: scale(1.05);
+        }
+
+    .btn-secondary {
+        margin-top: 10px;
+    }
+
+    .btn-rounded {
+        border-radius: 15px;
+    }
+
+    h4 {
+        margin: 0;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+</style>
+
+<h1> </h1>
+
+<div class="card-container">
+    <div class="form-container">
+        <h4 class="h4-3d">تسجيل الطلبات الوارده</h4>
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="OrdId" class="control-label label-3d">رقم الطلب</label>
+                <input asp-for="OrdId" class="form-control gradient-border rounded-input text-right-input" readonly />
+                <span asp-validation-for="OrdId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OrdDate" class="control-label label-3d">تاريخ الطلب</label>
+                <input asp-for="OrdDate" class="form-control gradient-border rounded-input text-right-input" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="OrdDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label label-3d">البريد الإلكتروني</label>
+                <input type="text" class="form-control gradient-border rounded-input text-right-input" value="@ViewBag.UserEmail" readonly />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Type" class="control-label label-3d">نوع الطلب</label>
+                <input id="Type" asp-for="Type" type="text" class="form-control gradient-border rounded-input text-right-input" value="شراء" readonly>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center" style="padding-right:20px;">
+                <input type="submit" value="تسجيل" class="btn btn-primary btn-rounded" style="background-color: #5fbde1; padding-right:25px; font-size:25px; padding-left:25px;" />
+            </div>
+        </form>
+    </div>
+</div>
+
+ 
+
+@section Scripts {
+    <script>
+        $(function () {
+            console.log("Document ready");
+
+            // Fetch the initial order ID from the server
+            fetchLatestOrderID();
+
+            // Function to fetch the latest order ID from the server
+            function fetchLatestOrderID() {
+                console.log("Fetching latest order ID...");
+                // AJAX request to fetch the latest order ID
+                $.ajax({
+                    url: '/Orders/GetLatestOrderID', // Endpoint to fetch the latest order ID
+                    type: 'GET',
+                    success: function (data) {
+                        console.log("Successfully fetched order ID:", data);
+                        // Update the ordId field with the fetched order ID
+                        $('#OrdId').val(data);
+                    },
+                    error: function () {
+                        console.log('Error fetching latest order ID');
+                    }
+                });
+            }
+
+            // Check if background image loaded or encountered an error
+            var backgroundImage = new Image();
+            backgroundImage.onload = function () {
+                console.log('Background image loaded successfully');
+            };
+            backgroundImage.onerror = function () {
+                console.log('Error loading background image');
+            };
+            backgroundImage.src = '/css/image/entryboym.png'; // Adjust path as needed
+        });
+    </script>
+}

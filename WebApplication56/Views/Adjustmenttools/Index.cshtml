@@ -1,0 +1,113 @@
+﻿@model IEnumerable<WebApplication56.Models.Adjustmenttool>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Balance
+            </th>
+            <th>
+                Actual Quantity
+            </th>
+            <th>
+                Difference
+            </th>
+            <th>
+                Tool Name
+            </th>
+            <th>
+                adjid
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.ActualQuantity, new { @class = "form-control", type = "number", id = "actualQuantity-" + item.AdjId })
+                </td>
+                <td>
+                    <span id="difference-@item.AdjId">@Html.DisplayFor(modelItem => item.Difference)</span>
+                </td>
+                <td>
+                    @ViewBag.AdjId <!-- Display AdjId from session -->
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToolNameNavigation.ToolName)
+                </td>
+                <td>
+                    <button class="update-button" style="background-color: goldenrod; color: white;" onclick="updateToolNameQuantityAndDifference(@item.AdjId)">تحديث</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        // Event listener for changes in Actual Quantity input
+        document.addEventListener('DOMContentLoaded', function () {
+        @foreach (var item in Model)
+        {
+            <text>
+                                            var actualQuantityInput = document.getElementById('actualQuantity-@item.AdjId');
+                var differenceDisplay = document.getElementById('difference-@item.AdjId');
+
+                if (actualQuantityInput && differenceDisplay) {
+                    actualQuantityInput.addEventListener('input', function () {
+                        // Get the current values of Actual Quantity and Balance
+                        var actualQuantityValue = parseInt(this.value);
+                        var balanceValue = parseInt('@item.Balance');
+
+                        // Calculate the difference
+                        var difference = actualQuantityValue - balanceValue;
+
+                        // Update the Difference display
+                        differenceDisplay.textContent = difference; // No need to fix decimal places for integers
+                    });
+                }
+            </text>
+        }
+                        });
+
+        // Function to handle AJAX request for updating tool name quantity and difference
+        function updateToolNameQuantityAndDifference(adjId) {
+            var newToolName = document.getElementById('toolName-' + adjId).value;
+            var actualQuantity = document.getElementById('actualQuantity-' + adjId).value;
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("UpdateToolNameQuantityAndDifference", "Adjustments")',
+                data: { adjId: adjId, newToolName: newToolName, actualQuantity: actualQuantity },
+                success: function (response) {
+                    if (response.success) {
+                        console.log("Update successful");
+                        // Additional actions based on the success response can be added here
+                    } else {
+                        console.error("Update failed: " + response.message);
+                        // Additional actions based on the failure response can be added here
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("AJAX request failed: " + error);
+                    // Additional actions based on the error can be added here
+                }
+            });
+        }
+    </script>
+}

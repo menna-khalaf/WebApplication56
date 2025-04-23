@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Annual Chart Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .charts-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .chart-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1 1 400px;
+            min-width: 400px;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        #printButton {
+            margin-top: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 id="clinicName"></h1>
+        </div>
+        <div class="charts-container">
+            <div class="chart-group">
+                <!-- Canvas for Pie Chart -->
+                <div class="card">
+                    <h2>Pie Chart</h2>
+                    <canvas id="pieChart" width="400" height="200"></canvas>
+                </div>
+                <!-- Canvas for Bar Chart -->
+                <div class="card">
+                    <h2>Bar Chart</h2>
+                    <canvas id="barChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+            <div class="chart-group">
+                <!-- Canvas for Line Chart -->
+                <div class="card">
+                    <h2>Line Chart</h2>
+                    <canvas id="lineChart" width="400" height="200"></canvas>
+                </div>
+                <!-- Canvas for Doughnut Chart -->
+                <div class="card">
+                    <h2>Doughnut Chart</h2>
+                    <canvas id="doughnutChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="card">
+                <h2>Data Table</h2>
+                <table id="DataTable">
+                    <thead>
+                        <tr>
+                            <th>Order Date</th>
+                            <th>Tool Name</th>
+                            <th>Outgoing Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data rows will be added dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </footer>
+        <button id="printButton"><i class="fas fa-print"></i></button>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var clinicName = '@Html.Raw(Model)'; // Use Razor to inject the model (clinic name) into the JavaScript
+            $('#clinicName').text('تقرير شهر نوفمبر عن ' + clinicName);
+
+            $.ajax({
+                type: "POST",
+                url: "/SelectedClinic/a1MonthNOVEMBERPOST", // Adjust the URL for the annual action
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log("Received data for charts:", data);
+
+                    // Populate table with data
+                    if (data && data.length > 0) {
+                        var tableBody = $('#DataTable tbody');
+                        tableBody.empty();
+                        for (var i = 0; i < data.length; i++) {
+                            var row = $('<tr>');
+                            row.append($('<td>').text(data[i].orderDate));
+                            row.append($('<td>').text(data[i].toolName));
+                            row.append($('<td>').text(data[i].outgoingQuantity));
+                            tableBody.append(row);
+                        }
+                    } else {
+                        console.log("No data received or empty data received.");
+                    }
+
+                    // Chart 1: Pie Chart
+                    var pieData = {
+                        labels: data.map(item => item.toolName),
+                        datasets: [{
+                            data: data.map(item => item.outgoingQuantity),
+                            backgroundColor: ['red', 'blue', 'green', 'yellow'] // Example colors, adjust as needed
+                        }]
+                    };
+                    var pieCanvas = document.getElementById('pieChart');
+                    var pieCtx = pieCanvas.getContext('2d');
+                    new Chart(pieCtx, {
+                        type: 'pie',
+                        data: pieData,
+                        options: {
+                            tooltips: {
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        var dataset = data.datasets[tooltipItem.datasetIndex];
+                                        var index = tooltipItem.index;
+                                        return data.labels[index] + ': ' + dataset.data[index] + ' - Order Date: ' + data.labels[index];
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    // Chart 2: Bar Chart
+                    var barData = {
+                        labels: data.map(item => item.toolName),
+                        datasets: [{
+                            label: 'Outgoing Quantity',
+                            data: data.map(item => item.outgoingQuantity),
+                            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    };
+                    var barCanvas = document.getElementById('barChart');
+                    var barCtx = barCanvas.getContext('2d');
+                    new Chart(barCtx, {
+                        type: 'bar',
+                        data: barData,
+                        options: {
+                            tooltips: {
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        return data.datasets[tooltipItem.datasetIndex].label + ': ' + tooltipItem.yLabel + ' - Order Date: ' + data.labels[tooltipItem.index];
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    // Chart 3: Line Chart
+                    var lineData = {
+                        labels: data.map(item => item.orderDate),
+                        datasets: [{
+                            label: 'Outgoing Quantity',
+                            data: data.map(item => item.outgoingQuantity),
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1,
+                            fill: false
+                        }]
+                    };
+                    var lineCanvas = document.getElementById('lineChart');
+                    var lineCtx = lineCanvas.getContext('2d');
+                    new Chart(lineCtx, {
+                        type: 'line',
+                        data: lineData,
+                        options: {
+                            tooltips: {
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        return data.datasets[tooltipItem.datasetIndex].label + ': ' + tooltipItem.yLabel + ' - Order Date: ' + data.labels[tooltipItem.index];
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    // Chart 4: Doughnut Chart
+                    var doughnutData = {
+                        labels: data.map(item => item.toolName),
+                        datasets: [{
+                            data: data.map(item => item.outgoingQuantity),
+                            backgroundColor: ['red', 'blue', 'green', 'yellow'] // Example colors, adjust as needed
+                        }]
+                    };
+                    var doughnutCanvas = document.getElementById('doughnutChart');
+                    var doughnutCtx = doughnutCanvas.getContext('2d');
+                    new Chart(doughnutCtx, {
+                        type: 'doughnut',
+                        data: doughnutData,
+                        options: {
+                            tooltips: {
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        var dataset = data.datasets[tooltipItem.datasetIndex];
+                                        var index = tooltipItem.index;
+                                        return data.labels[index] + ': ' + dataset.data[index] + ' - Order Date: ' + data.labels[index];
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error occurred:", status, error);
+                }
+            });
+        });
+
+        // Function to handle the print button click
+        document.getElementById('printButton').addEventListener('click', function () {
+            window.print(); // Trigger the print functionality
+        });
+    </script>
+</body>
+</html>

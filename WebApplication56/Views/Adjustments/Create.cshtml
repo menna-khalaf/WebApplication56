@@ -1,0 +1,152 @@
+﻿@model WebApplication56.Models.Adjustment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 style="height:40px;"></h1>
+<div class="d-flex justify-content-start pt-5" style="padding-right:180px;">
+    <!-- Align form to the left and add padding-top -->
+    <div class="card animated-card border-radius-card text-right" style="width: 25rem; background-color: white;">
+        <!-- Adjusted width to 25rem -->
+        <div class="card-body">
+            <h4 class="h4-3d">التسويات</h4>
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group text-right">
+                    <label class="control-label" style="color:#0c1c7a; font-size:20px;">تاريخ التسويه</label>
+                    <input asp-for="AdjDate" class="form-control" type="date" style="text-align: right;" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    <span asp-validation-for="AdjDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" style="color:#0c1c7a; font-size:20px;">البريد الالكتروني</label>
+                    <input type="text" class="form-control" value="@ViewBag.UserEmail" readonly style="width: 100%;" />
+                </div>
+
+                <div class="form-group text-center" style="padding-right:20px;">
+                    <input type="submit" value="تسجيل" class="btn btn-primary btn-rounded" style="background-color: #5fbde1; padding-right:25px; font-size:25px; padding-left:25px;" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-start mt-3" style="padding-right:305px;">
+    <!-- Align return button to the left -->
+    <a asp-controller="Adjustmenttools1" asp-action="Index" class="btn btn-secondary btn-radius" style="color:#0c1c7a; background-color:white; font-size:25px;">العودة إلى القائمة</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var backgroundImage = new Image();
+            backgroundImage.onload = function () {
+                console.log('Background image loaded successfully');
+            };
+            backgroundImage.onerror = function () {
+                console.log('Error loading background image');
+            };
+            backgroundImage.src = '/css/image/entryboym.png';
+        });
+    </script>
+}
+
+<style>
+    .h4-3d {
+        font-size: 1.75rem;
+        font-weight: bold; /* Make heading text bold */
+        color: #fff;
+        text-shadow: 2px 2px 4px #000;
+        background-color: #5fbde1;
+        padding: 0;
+        display: inline-block;
+        margin-bottom: 20px; /* Add margin below the heading */
+        width: 100%;
+        text-align: center;
+    }
+
+    html, body {
+        height: 100vh; /* تعيين ارتفاع الصفحة بنسبة للشاشة بالكامل */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('/css/image/entryboym.png'); /* Add background image */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        direction: rtl;
+        text-align: right;
+    }
+
+    .d-flex {
+        display: flex;
+    }
+
+    .justify-content-start {
+        justify-content: flex-start;
+    }
+
+    .pt-5 {
+        padding-top: 3rem; /* Add padding-top */
+    }
+
+    .animated-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: white; /* Ensure background color is white */
+    }
+
+        .animated-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+    .border-radius-card {
+        border-radius: 15px;
+    }
+
+    .card-title {
+        color: #007bff;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 15px;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    .btn-secondary {
+        border-radius: 15px;
+    }
+
+    .btn-radius {
+        border-radius: 15px;
+    }
+
+    .text-danger {
+        color: #dc3545 !important;
+    }
+
+    .form-control {
+        margin-bottom: 15px;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .mt-3 {
+        margin-top: 1rem;
+    }
+</style>

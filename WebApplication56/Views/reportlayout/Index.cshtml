@@ -1,0 +1,437 @@
+﻿<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lemonada:wght@300..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <title>كروت مطوية</title>
+    <style>
+        body {
+            background-image: url('reportimage2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            min-height: 100vh;
+        }
+
+        .content-card {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 15px;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+
+        .card-big-shadow {
+            max-width: 320px;
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: auto;
+        }
+
+        .card[data-radius="none"] {
+            border-radius: 0px;
+            transition: all 0.2s;
+        }
+
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+            background-color: #b8d8d8;
+            color: #252422;
+            position: relative;
+            z-index: 1;
+            border: 2px solid #47b5e5;
+            background: linear-gradient(135deg, #47b5e5 0%, #f9fcfc 100%);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                border-radius: 15px;
+            }
+
+            .card .category, .card .label {
+                font-size: 14px;
+                margin-bottom: 0px;
+            }
+
+        .card-big-shadow:before {
+            background-image: url("http://static.tumblr.com/i21wc39/coTmrkw40/shadow.png");
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            bottom: -12%;
+            content: "";
+            display: block;
+            left: -12%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 0;
+        }
+
+        h4, .h4 {
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            color: #003366;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            align-self: stretch;
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h6, .h6 {
+            font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .card .description {
+            font-size: 16px;
+            color: #506568;
+        }
+
+        .card .content {
+            padding: 60px 20px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .list-group {
+            padding: 0;
+            list-style: none;
+            color: #003366;
+            font-family: "Lemonada", cursive;
+        }
+
+        .list-group-item {
+            padding: 10px;
+            margin-bottom: 30px;
+        }
+
+            .list-group-item:hover {
+                background: -webkit-linear-gradient(#47b5e5, rgb(127, 193, 240), rgb(255, 255, 255));
+                color: #fff;
+            }
+
+        .swiper-container {
+            width: 150px;
+            height: 175px;
+            position: relative;
+        }
+
+        .swiper-slide {
+            background: linear-gradient(to bottom, white 80px, #8d0303);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            position: relative;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+            .swiper-slide::before,
+            .swiper-slide::after {
+                content: "";
+                position: absolute;
+                top: 25%;
+                width: 50%;
+                height: 3px;
+                background-color: #650101;
+            }
+
+            .swiper-slide::before {
+                left: 0;
+                transform: translateY(-50%);
+            }
+
+            .swiper-slide::after {
+                right: 0;
+                transform: translateY(-50%);
+            }
+
+        .swiper-slide-active {
+            display: flex;
+        }
+
+        .slide-content {
+            font-family: "Lemonada", cursive;
+            font-size: 25px;
+            color: #650101;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 75px;
+        }
+
+        .slide-title {
+            font-size: 27px;
+            margin-bottom: 20px;
+            color: #650101;
+            position: flex;
+            font-weight: 60px;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            color: #650101;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            background: none;
+            border: none;
+            font-size: 1px;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .swiper-button-next {
+            right: -50px;
+        }
+
+        .swiper-button-prev {
+            left: -50px;
+        }
+
+        .card-quarterly-reports .content {
+            padding-top: 80px;
+        }
+
+        .card-quarterly-reports .list-group {
+            margin-top: 20px;
+        }
+
+
+
+
+
+
+
+        .list-group-item a {
+            text-decoration: none; /* Remove underline from links */
+            color: inherit; /* Ensure links inherit text color */
+        }
+
+            .list-group-item a:hover {
+                color:white;
+                background-color: #0c1c7a;
+            }
+    </style>
+</head>
+<body>
+    <div class="content-card">
+        <!-- Existing cards -->
+        <!-- New card with slider -->
+        <div class="card-big-shadow">
+            <div class="card card-just-text" data-radius="none">
+                <div class="content">
+                    <h4>التقارير الشهريه </h4>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <a href="@Url.Action("A1MonthJANUARY", "SelectedTools")">
+                                    <div class="slide-title"> شهر</div>
+                                    يناير
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+
+                                <div class="slide-content">
+
+                                    <a href="@Url.Action("A1MONTHFEBRUARY", "SelectedTools")">
+                                    <div class="slide-title">شهر</div>
+                                    فبراير
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <a href="@Url.Action("A1MONTHMARCH", "SelectedTools")">
+                                    <div class="slide-title">شهر</div>
+                                    مارس
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <a href="@Url.Action("A1MONTHAPRIL", "SelectedTools")">
+                                    <div class="slide-title">شهر</div>
+                                    أبريل
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <a href="@Url.Action("A1MONTHMAY", "SelectedTools")">
+                                    <div class="slide-title">شهر</div>
+                                    مايو
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <a href="@Url.Action("A1MONTHJUNE", "SelectedTools")">
+                                    <div class="slide-title">شهر</div>
+                                    يونيو
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <a href="@Url.Action("A1MONTHJULY", "SelectedTools")">
+                                    <div class="slide-title">شهر</div>
+                                    يوليو
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <a href="@Url.Action("A1MONTHAUGUST", "SelectedTools")">
+                                    <div class="slide-title">شهر</div>
+                                    أغسطس
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <a href="@Url.Action("A1MONTHSEPTEMBER", "SelectedTools")">
+                                    <div class="slide-title">شهر</div>
+                                    سبتمبر
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <a href="@Url.Action("A1MONTHOCTOBER", "SelectedTools")">
+                                    <div class="slide-title">شهر</div>
+                                    أكتوبر
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <a href="@Url.Action("A1MONTHNOVEMBER", "SelectedTools")">
+                                    <div class="slide-title">شهر</div>
+                                    نوفمبر
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slide-content">
+                                    <a href="@Url.Action("A1MONTHDECEMBER", "SelectedTools")">
+                                    <div class="slide-title">شهر</div>
+                                    ديسمبر
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next">
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-big-shadow">
+            <div class="card card-just-text card-quarterly-reports" data-radius="none">
+                <div class="content">
+                    <h4>التقارير الربع سنويه</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="@Url.Action("A1FirstQuarter", "SelectedTools")">تقارير الربع الاول من السنه</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="@Url.Action("A1SECONDQuarter", "SelectedTools")">تقارير الربع الثانى من السنه</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="@Url.Action("A1THIRDQuarter", "SelectedTools")">تقارير الربع الثالث من السنه</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="@Url.Action("A1FOURTHQuarter", "SelectedTools")">تقارير الربع الرابع من السنه</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-big-shadow">
+            <div class="card card-just-text" data-radius="none">
+                <div class="content">
+                    <h4>التقارير النصف سنويه</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="@Url.Action("A1FIRSTHALF", "SelectedTools")">النصف الأول من السنة</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="@Url.Action("A1SECONDHALF", "SelectedTools")">النصف الثاني من السنة</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-big-shadow">
+            <div class="card card-just-text" data-radius="none">
+                <div class="content">
+                    <h4>التقارير السنويه</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="@Url.Action("A1", "SelectedTools")">تقرير سنوي</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Include Swiper JS -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                loop: true,
+                simulateTouch: true,
+                initialSlide: 0,
+                allowSlidePrev: true,
+                allowSlideNext: true,
+                grabCursor: true,
+                centeredSlides: true,
+            })
+        </script>
+</body>
+</html>

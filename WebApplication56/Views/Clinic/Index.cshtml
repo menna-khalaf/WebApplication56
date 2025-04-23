@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebApplication56.Models.Clinic>
+
+<link rel="stylesheet" href="~/css/clinic2.css">
+
+<div class="container-fluid counter-section">
+    <div class="container py-5">
+        <div class="row g-5 justify-content-center">
+            @foreach (var clinic in Model)
+            {
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="counter-item p-5">
+                        <div class="counter-content bg-white p-4">
+                            <a href="#" onclick="setSelectedClinic('@clinic.ClinicName')" style="background-color:#f87c7c; border-radius: 10%; display: inline-block; text-decoration: none; padding: 10px;">
+                                <img src="@Url.Content("../images/teeth.PNG")" width="80px" style="border-radius:50%;" height="100px" alt="Teeth Image">
+                                <h5 class="text-primary"><b><i style="color:white;">@clinic.ClinicName</i></b></h5>
+                                <div class="svg-img">
+                                    <svg width="100" height="50">
+                                        <polygon points="55, 10 85, 55 25, 55 25," style="fill:rgba(224,231,239,255)" />
+                                    </svg>
+                                </div>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+       @*  <div class="text-center">
+            <a href="@Url.Action("Create", "Clinic")" class="btn btn-primary">Add Clinic</a>
+        </div> *@
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function setSelectedClinic(clinicName) {
+        console.log("Selecting clinic: " + clinicName);
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("SelectClinic", "Clinic")",
+            data: { clinicName: clinicName },
+            success: function (response) {
+                console.log("Clinic selected and stored in session: " + clinicName);
+                window.location.href = "@Url.Action("Create", "ClinicOrder")";
+            },
+            error: function (xhr, status, error) {
+                console.error("Error selecting clinic: " + error);
+            }
+        });
+    }
+</script>

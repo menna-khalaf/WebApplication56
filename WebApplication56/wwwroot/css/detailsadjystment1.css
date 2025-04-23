@@ -1,0 +1,84 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
+/* Scope styles to #details-wrapper to avoid affecting the navbar */
+#details-wrapper {
+    font-family: 'Amiri', serif;
+    color: #333;
+    text-align: right;
+}
+
+    #details-wrapper .animated-title {
+        opacity: 0;
+        animation: fade-in 2s forwards;
+        font-size: 2.5rem;
+        color: #007bff;
+    }
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+#details-wrapper .details-container {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 50px auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+    animation: slide-in 1s forwards;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    #details-wrapper .details-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+@keyframes slide-in {
+    to {
+        transform: translateY(0);
+    }
+}
+
+#details-wrapper .details-list dt {
+    font-weight: bold;
+    color: #555;
+    font-size: 1.25rem;
+    padding: 10px 0;
+}
+
+#details-wrapper .details-list dd {
+    color: #666;
+    font-size: 1.1rem;
+    padding: 10px 0;
+}
+
+#details-wrapper .btn {
+    margin: 5px;
+}
+
+#details-wrapper .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+#details-wrapper .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+#details-wrapper .text-center {
+    text-align: center;
+}
+
+#details-wrapper .rounded-pill {
+    border-radius: 50px !important;
+}
+
+#details-wrapper .animated-fade-in {
+    opacity: 0;
+    animation: fade-in 2s forwards;
+}

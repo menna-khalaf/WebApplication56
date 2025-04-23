@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Chart Dashboard</title>
+    <style>
+        /* Styles remain unchanged */
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Data Table</h2>
+            <table id="DataTable">
+                <thead>
+                    <tr>
+                        <th>Order Date</th>
+                        <th>Tool Name</th>
+                        <th>Outgoing Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data rows will be added dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Canvas for Pie Chart -->
+        <div class="card">
+            <h2>Pie Chart</h2>
+            <canvas id="pieChart" width="400" height="200"></canvas>
+        </div>
+
+        <!-- Canvas for Bar Chart -->
+        <div class="card">
+            <h2>Bar Chart</h2>
+            <canvas id="barChart" width="400" height="200"></canvas>
+        </div>
+
+        <!-- Canvas for Line Chart -->
+        <div class="card">
+            <h2>Line Chart</h2>
+            <canvas id="lineChart" width="400" height="200"></canvas>
+        </div>
+
+        <!-- Canvas for Doughnut Chart -->
+        <div class="card">
+            <h2>Doughnut Chart</h2>
+            <canvas id="doughnutChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "/SelectedClinic/QuarterlySalesForClinicData_a1",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log("Received data for charts:", data);
+
+                    // Populate table with data
+                    if (data && data.length > 0) {
+                        var tableBody = $('#DataTable tbody');
+                        tableBody.empty();
+                        for (var i = 0; i < data.length; i++) {
+                            var row = $('<tr>');
+                            row.append($('<td>').text(data[i].orderDate));
+                            row.append($('<td>').text(data[i].toolName));
+                            row.append($('<td>').text(data[i].outgoingQuantity));
+                            tableBody.append(row);
+                        }
+                    } else {
+                        console.log("No data received or empty data received.");
+                    }
+
+                    // Chart generation code remains unchanged...
+
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error occurred:", status, error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

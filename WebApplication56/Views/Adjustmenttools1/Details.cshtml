@@ -1,0 +1,66 @@
+﻿@model WebApplication56.Models.Adjustmenttool
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link  rel="stylesheet" href="~/css/detailsadjystment1.css"/>
+<div id="details-wrapper">
+    <h1 class="text-center animated-title">التفاصيل</h1>
+
+    <div class="details-container animated-fade-in">
+        <h4 class="text-center text-primary">أداة التعديل</h4>
+        <hr />
+        <dl class="row details-list">
+            <dt class="col-sm-4">
+                الرصيد
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Balance)
+            </dd>
+            <dt class="col-sm-4">
+                الكمية الفعلية
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ActualQuantity)
+            </dd>
+            <dt class="col-sm-4">
+                الفرق
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Difference)
+            </dd>
+            <dt class="col-sm-4">
+                السبب
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Because)
+            </dd>
+            <dt class="col-sm-4">
+                البريد الإلكتروني
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Adj.Email)
+            </dd>
+            <dt class="col-sm-4">
+                اسم الأداة
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ToolNameNavigation.ToolName)
+            </dd>
+        </dl>
+    </div>
+    <div class="text-center mt-4">
+        @Html.ActionLink("تعديل", "Edit", new { id = Model.AdjId }, new { @class = "btn btn-warning rounded-pill" }) |
+        <a asp-action="Index" class="btn btn-primary rounded-pill">العودة إلى القائمة</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const title = document.querySelector('.animated-title');
+            title.classList.add('fade-in');
+        });
+    </script>
+}
+ 

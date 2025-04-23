@@ -1,0 +1,83 @@
+﻿html, body {
+    height: 100vh; /* تعيين ارتفاع الصفحة بنسبة للشاشة بالكامل */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url("/css/image/Untitled-16.png"); /* Corrected URL path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 5px 10px; /* Reduced padding for smaller height */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add shadow for better visibility */
+    z-index: 1000; /* Ensure the header is on top */
+}
+
+.logo img {
+    max-height: 200px; /* Increased max-height for larger image */
+    max-width: 120px;
+    height: auto;
+    width: auto;
+    animation: moveLogo 3s infinite alternate; /* حركة الشعار */
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 5px; /* Reduced gap for smaller height */
+}
+
+.btn {
+    padding: 5px 10px; /* Reduced padding for smaller height */
+    background-color: #081662;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .btn:hover {
+        background-color: #02194b;
+    }
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    margin-top: 60px; /* Adjust margin-top to prevent content from being hidden under the header */
+}
+
+hr {
+    margin: 0;
+    border: none;
+    border-top: 1px solid #02194b;
+}
+
+.logo-below {
+    max-width: 180px;
+    background: transparent; /* تعيين الخلفية إلى شفافة */
+}
+
+@keyframes moveLogo {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-20px);
+    }
+}
